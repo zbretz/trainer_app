@@ -1,0 +1,62 @@
+
+
+body {
+  background-image: url("/static/images/gym_background.jpg");
+  background-size: cover;
+}
+
+
+h3 {
+  color: coral;
+  font-family: 'Permanent Marker', cursive;
+}
+
+.heading{
+  color: coral;
+  font-size: 30px;
+  font-family: 'Permanent Marker', cursive;
+}
+
+p, label  {
+    font-family: 'Dosis', sans-serif;
+    font-size: 30px;
+    line-height: 10px;
+}
+
+
+.thing{
+  margin-top: 30px;
+  margin-bottom: 20px;
+  margin-right: 20px;
+  margin-left: 20px;
+  background: #242627;
+
+}
+
+#top, #bottom, #left, #right {
+	background: #242627;
+	position: fixed;
+	}
+	#left, #right {
+		top: 0; bottom: 0;
+		width: 18px;
+		}
+		#left { left: 0; }
+		#right { right: 0; }
+		
+	#top, #bottom {
+		left: 0; right: 0;
+		height: 18px;
+		}
+		#top { top: 0; }
+		#bottom { bottom: 0; }
+
+
+.panel {
+  display: none;
+  overflow: hidden;
+}
+
+img {
+  width: 80%;
+}

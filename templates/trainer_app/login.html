@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>repl.it</title>
+    <link href="{% static 'css/login.css' %}" rel="stylesheet" type="text/css" />
+
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+    <link href="https://fonts.googleapis.com/css?family=Dosis:800|Luckiest+Guy|Permanent+Marker&display=swap" rel="stylesheet">
+
+  </head>
+
+  <body class='w3-dark-grey w3-margin' style="padding:30% 0" >
+
+<div class="thing w3-center w3-panel ">
+    <p class='heading'>Zach's</p>
+    <p class='heading'>Training App</p>    
+</div>
+
+<div class="thing w3-center w3-panel">
+  <form id="login_form" method="post" action = "{% url 'trainer_app:login' %}" style="margin-top:20px">
+    {% csrf_token %}
+    <label>Name</label>
+    <input name='name' class="w3-input w3-section" type="text"/>
+    <label>Password</label>
+    <input name='password' class="w3-input w3-section" type="text"/>
+    <input type="submit" value="submit" />
+    </form>
+</div>
+
+
+  </body>
+</html>

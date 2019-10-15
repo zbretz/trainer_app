@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>repl.it</title>
+
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link href="{% static 'css/base.css' %}" rel="stylesheet" type="text/css" />
+
+    <link href="https://fonts.googleapis.com/css?family=Dosis:800|Luckiest+Guy|Permanent+Marker&display=swap" rel="stylesheet">
+
+  </head>
+
+  <body class='w3-dark-grey w3-margin ' >
+
+<div id="left"></div>
+<div id="right"></div>
+<div id="top"></div>
+<div id="bottom"></div>
+
+
+
+{% for each in units %}
+
+
+  <div class="thing w3-center w3-panel w3-padding">
+      <p class='heading'>{{each.type}}</p>
+        {% for e in each.exercises.all %}
+      <p>{{e.name}}</p>
+        {% endfor %}
+  </div>
+
+{% endfor %}
+
+{%if completed %}
+<div id='complete' class=" complete w3-panel w3-padding-24 w3-pale-green w3-center">
+  <p><a id='next_button' href="{% url 'trainer_app:home' %}">Return to Menu.</a></p>
+  <!-- <p class='w3-small'> go back </p> -->
+</div>
+{% else %}
+<div id='complete' class="complete w3-panel w3-padding-24 w3-pale-green w3-center">
+  <p><a id='next_button' href="{% url 'trainer_app:workout_complete' %}">Workout Complete.</a></p>
+  <!-- <p class='w3-small'> click if complete </p> -->
+</div>
+{% endif %}
+
+
+
+<div id="next" class="status w3-panel w3-red w3-center" style="display:none">
+  <p><a id='next_button' class="disabled" href="{% url 'trainer_app:workout_complete' %}">Next Workout.</a></p>
+  <p class='w3-small'> click when ready  </p>
+</div>
+
+
+<script src="{% static 'js/jquery-3.3.1.min.js' %}" crossorigin="anonymous"></script>
+<script src="{% static 'js/trainer-ajax.js' %}" crossorigin="anonymous"></script>
+
+  </body>
+</html>
