@@ -11,10 +11,18 @@ h3 {
   font-family: 'Permanent Marker', cursive;
 }
 
-.heading{
+.heading {
   color: coral;
   font-size: 30px;
   font-family: 'Permanent Marker', cursive;
+}
+
+#submit-button{
+  margin: 10px;
+  margin-top: -4px;
+  color: white;
+  font-size: 20px;
+  font-family: 'Dosis', sans-serif;
 }
 
 p, label  {
