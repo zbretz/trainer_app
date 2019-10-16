@@ -42,6 +42,7 @@ def current_workout(request):
 		return redirect(reverse('trainer_app:home'))
 		#return render(request, 'trainer_app/home.html', context=context_dict)
 
+@login_required
 def last_workout(request):
 
 	user_profile = request.user.userprofile
@@ -64,7 +65,7 @@ def last_workout(request):
 	return render(request, 'trainer_app/index3.html', context=context_dict)
 
 
-
+@login_required
 def workout_complete(request):
 	user_profile = request.user.userprofile
 	user_profile.last_workout_completed = datetime.now()
@@ -79,6 +80,7 @@ def workout_complete(request):
 
 	return redirect(reverse('trainer_app:home'))
 
+@login_required
 def home(request):
 	user_profile = request.user.userprofile
 	workout_number = user_profile.current_workout.workout_number
