@@ -21,7 +21,7 @@ ALLOWED_HOSTS = ['138.197.193.113', 'localhost']
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
-#be sure to set the envrionment variable: os.environ['DB_PASS'] = 'whatever the password is'
+#be sure to set the envrionment variable: os.environ['DB_PASS'] = 'whateverthepasswordis'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
