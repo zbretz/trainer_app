@@ -31,7 +31,7 @@
         {% for e in each.exercises.all %}
       <p class='accordion'>{{e.name}}</p>
       <div class="panel">
-        <img src="{{ MEDIA_URL }}{{e.image}}"/>
+        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="{{ MEDIA_URL }}{{e.image}}"/>
       </div>
         {% endfor %}
   </div>
