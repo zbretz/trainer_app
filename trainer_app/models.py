@@ -4,9 +4,15 @@ from datetime import datetime
 
 # Create your models here.
 
+
+def exercise_image_path(instance, filename):
+	return 'exercise_demos/{0}'.format(filename)
+
 class Exercise(models.Model):
 	name = models.CharField(max_length=128, unique=True)
-	image = models.ImageField(null = True, upload_to='exercise_demos/{0}'.format(self.name))
+	#image = models.ImageField(null = True, upload_to='exercise_demos/{0}'.format(name))
+	#image = models.ImageField(null = True, upload_to=exercise_image_path)
+	image = models.ImageField(null = True, upload_to='exercise_demos/')
 
 	def __str__(self):
 		return self.name

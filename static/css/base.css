@@ -5,6 +5,14 @@ a.disabled {
 }
 */
 
+.panel {
+  display: none;
+  overflow: hidden;
+}
+
+img {
+  width: 80%;
+}
 
 
 h3 {
