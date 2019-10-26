@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
 from .dev_settings import *
+import os
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -26,7 +27,8 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'trainer_project',
         'USER': 'zach',
-        'PASSWORD': os.environ['DB_PASS'],
+#        'PASSWORD': os.environ['DB_PASS'],
+	'PASSWORD': 'pippen',
         'HOST': 'localhost',
         'PORT': '',
     }
