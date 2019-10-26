@@ -6,6 +6,7 @@ from datetime import datetime
 
 class Exercise(models.Model):
 	name = models.CharField(max_length=128, unique=True)
+	image = models.ImageField(null = True, upload_to='exercise_demos/')
 
 	def __str__(self):
 		return self.name
