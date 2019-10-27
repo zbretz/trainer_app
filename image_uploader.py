@@ -18,8 +18,11 @@ def load_media():
 			print(exercise_name)
 			print(e)
 
-def read_dir()
-	print(os.getcwd())
+def read_dir():
+	path = os.path.dirname(os.path.abspath(__file__))
+	new_path = os.path.join(path, "media/exercise_demos")
+	print(os.listdir(new_path))
+
 
 if __name__ == "__main__":
 	#load_media()
