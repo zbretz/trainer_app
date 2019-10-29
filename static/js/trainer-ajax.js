@@ -13,6 +13,12 @@ for (i = 0; i < acc.length; i++) {
     } else {
       panel.style.display = "block";
     }
+
+    console.log(panel.childNodes)
+
+    var video = panel.childNodes[1]
+    video.play()
+
   });
 }
 
