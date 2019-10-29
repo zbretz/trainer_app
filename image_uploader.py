@@ -22,7 +22,7 @@ def read_dir():
 	path = os.path.dirname(os.path.abspath(__file__))
 	new_path = os.path.join(path, "media/exercise_demos")
 	print(os.listdir(new_path))
-	return 
+
 
 if __name__ == "__main__":
 	#load_media()
