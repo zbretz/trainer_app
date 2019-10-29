@@ -5,6 +5,7 @@ a.disabled {
 }
 */
 
+
 .panel {
   display: none;
   overflow: hidden;
@@ -13,7 +14,6 @@ a.disabled {
 img {
   width: 80%;
 }
-
 
 h3 {
   color: coral;
