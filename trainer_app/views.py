@@ -5,6 +5,7 @@ from django.urls import reverse
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from datetime import datetime, timezone, timedelta
+from django.core.exceptions import ObjectDoesNotExist
 
 def checker(request):
 	time_now = datetime.now().replace(tzinfo=timezone.utc)
@@ -47,7 +48,10 @@ def last_workout(request):
 
 	user_profile = request.user.userprofile
 	workout_number = user_profile.current_workout.workout_number
-	workout = Workout.objects.get(group = user_profile.group, workout_number=workout_number - 1)
+	try:
+		workout = Workout.objects.get(group = user_profile.group, workout_number=workout_number - 1)
+	except ObjectDoesNotExist:
+		pass
 	units = workout.units.all()
 
 		#how many exercises are in each unit. to determine the label of each unit ('circuit, superset, solo')
