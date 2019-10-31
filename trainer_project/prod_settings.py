@@ -16,7 +16,7 @@ import os
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['138.197.193.113', 'localhost']
+ALLOWED_HOSTS = ['138.197.193.113', 'localhost', 'www.chambea.club', 'chambea.club']
 
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
