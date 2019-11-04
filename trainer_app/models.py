@@ -19,9 +19,15 @@ class Exercise(models.Model):
 
 class Unit(models.Model):
 	exercises = models.ManyToManyField(Exercise)
+	times_to_repeat = models.IntegerField(default=1)
 
 	def __str__(self):
 		return str([str(exercise) for exercise in self.exercises.all()])
+
+class Rep_Scheme(models.Model):
+	unit = models.ForeignKey(Unit, on_delete=models.CASCADE)
+	exercise = models.ForeignKey(Exercise, on_delete=models.CASCADE)
+	reps = models.CharField(max_length = 32, null=True)
 
 class Group(models.Model):
 	group_name = models.CharField(max_length=128, default='sample')

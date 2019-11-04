@@ -8,7 +8,28 @@ django.setup()
 from trainer_app.models import *
 from django.contrib.auth.models import User
 
-def read_csv():
+def read_csv_new():
+	with open('sample3.csv', newline = '') as f:
+		reader = csv.reader(f)
+
+		for row in reader:
+			group = Group.objects.get_or_create(group_name=row[1])[0]
+			workout = Workout.objects.get_or_create(group=group, workout_number=int(row[0]))[0]
+			workout.save()
+
+			unit = Unit.objects.create(times_to_repeat = row[2])
+
+			loop_index = 3
+			while not(loop_index > len(row[3:]) + 1) and row[loop_index] != '':
+					exercise = Exercise.objects.get_or_create(name = row[loop_index])[0]
+					#unit.exercises.add(exercise)
+					print('exercise: ' + row[loop_index] + '... reps: ' + row[loop_index + 1])
+					rep_scheme = Rep_Scheme.objects.create(unit = unit, exercise = exercise, reps = row[loop_index + 1])
+					loop_index += 2
+
+			workout.units.add(unit)	
+
+def read_csv_old():
 	with open('sample2.csv', newline = '') as f:
 		reader = csv.reader(f)
 		for row in reader:
@@ -51,5 +72,5 @@ def create_user():
 	#u2.save()
 
 if __name__ == "__main__":
-	read_csv()
+	read_csv_new()
 	create_user()

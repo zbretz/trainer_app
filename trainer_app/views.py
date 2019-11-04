@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from trainer_app.models import Workout, UserProfile, Unit
+from trainer_app.models import Workout, UserProfile, Unit, Rep_Scheme
 from django.urls import reverse
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
@@ -34,6 +34,8 @@ def current_workout(request):
 				unit.type = 'superset'
 			else:
 				unit.type = 'circuit'
+
+			unit.all_exercises = Rep_Scheme.objects.filter(unit=unit)
 
 		context_dict = {'units': units, 'workout': workout, 'completed':False}
 
