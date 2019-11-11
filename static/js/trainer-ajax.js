@@ -1,7 +1,7 @@
 
 $(document).ready(function() {
 
-/*
+
 
 
 var allimages= document.getElementsByTagName('img');
@@ -10,7 +10,7 @@ var allimages= document.getElementsByTagName('img');
             allimages[i].setAttribute('src', allimages[i].getAttribute('data-src'));
         }
     }
-*/
+
 
 /*
 function pageLoad() {

@@ -12,7 +12,12 @@ class Exercise(models.Model):
 	name = models.CharField(max_length=128, unique=True)
 	#image = models.ImageField(null = True, upload_to='exercise_demos/{0}'.format(name))
 	#image = models.ImageField(null = True, upload_to=exercise_image_path)
+	#image = models.ImageField(null = True, upload_to='exercise_demos/{0}'.format(name), default='exercise_demos/pushup.jpeg')
 	image = models.ImageField(null = True, upload_to='exercise_demos/')
+
+	def save(self, *args, **kwargs):
+		self.image = 'exercise_demos/{0}.mp4'.format(self.name)
+		super(Exercise, self).save(*args, **kwargs)
 
 	def __str__(self):
 		return self.name

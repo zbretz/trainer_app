@@ -34,7 +34,7 @@
       <p style="margin-top:-15px; font-family: 'arial', sans-serif; font-size:14px; color:yellow ">{{e.reps}} reps </p>
 
       <div class="panel">
-        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="{{ MEDIA_URL }}{{e.image}}"/>
+        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="{{ MEDIA_URL }}{{e.exercise.image}}"/>
       </div>
         {% endfor %}
   </div>
@@ -63,6 +63,8 @@
 
 <script src="{% static 'js/jquery-3.3.1.min.js' %}" crossorigin="anonymous"></script>
 <script src="{% static 'js/trainer-jquery.js' %}" crossorigin="anonymous"></script>
+<script src="{% static 'js/trainer-ajax.js' %}" crossorigin="anonymous"></script>
+
 
   </body>
 </html>

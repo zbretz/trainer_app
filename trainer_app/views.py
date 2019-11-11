@@ -52,8 +52,13 @@ def last_workout(request):
 	workout_number = user_profile.current_workout.workout_number
 	try:
 		workout = Workout.objects.get(group = user_profile.group, workout_number=workout_number - 1)
+		print('good'+ str(workout_number))
 	except ObjectDoesNotExist:
-		pass
+		workout = Workout.objects.get(group = user_profile.group, workout_number=workout_number)
+		print('or' + str(workout_number))
+	print('eeee')
+	print(workout_number)
+
 	units = workout.units.all()
 
 		#how many exercises are in each unit. to determine the label of each unit ('circuit, superset, solo')
