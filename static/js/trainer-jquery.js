@@ -16,8 +16,7 @@ for (i = 0; i < acc.length; i++) {
   });
 }
 
-$(document).ready(function() { alert("Hello, world!");
-});
+
 
 });
 
