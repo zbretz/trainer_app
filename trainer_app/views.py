@@ -70,6 +70,8 @@ def last_workout(request):
 			unit.type = 'superset'
 		else:
 			unit.type = 'circuit'
+
+		unit.all_exercises = Rep_Scheme.objects.filter(unit=unit)
 	
 	context_dict = {'units': units, 'workout': workout, 'completed':True}
 
