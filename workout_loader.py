@@ -22,7 +22,7 @@ def read_csv_new():
 			loop_index = 3
 			while not(loop_index > len(row[3:]) + 1) and row[loop_index] != '':
 					exercise = Exercise.objects.get_or_create(name = row[loop_index])[0]
-					#unit.exercises.add(exercise)
+					unit.exercises.add(exercise)
 					print('exercise: ' + row[loop_index] + '... reps: ' + row[loop_index + 1])
 					rep_scheme = Rep_Scheme.objects.create(unit = unit, exercise = exercise, reps = row[loop_index + 1])
 					loop_index += 2
