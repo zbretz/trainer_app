@@ -4,5 +4,5 @@ db.sqlite3
 .DS_Store
 .pyc
 __pycache__/
-trainer_app/migrations
+trainer_app/migrations/
 media/
