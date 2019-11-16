@@ -34,7 +34,7 @@
       <p style="margin-top:-15px; font-family: 'arial', sans-serif; font-size:14px; color:yellow ">{{e.reps}} reps </p>
 
       <div class="panel">
-        <video id='vid' width="240" height="240" loop controls>
+        <video id='vid' width="240" height="240" loop controls autoplay muted>
           <source src="{{ MEDIA_URL }}{{e.exercise.image}}" type="video/mp4">
           Your browser does not support the video tag.
         </video>
