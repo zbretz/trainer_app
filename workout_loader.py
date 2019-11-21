@@ -9,7 +9,7 @@ from trainer_app.models import *
 from django.contrib.auth.models import User
 
 def read_csv_new():
-	with open('sample3.csv', newline = '') as f:
+	with open('workout_programs/group2_nov20.csv', newline = '') as f:
 		reader = csv.reader(f)
 
 		for row in reader:
@@ -46,17 +46,17 @@ def read_csv_old():
 			workout.units.add(unit)
 
 def create_user():
-	group1 = Group.objects.get(group_name='group1')
+#	group1 = Group.objects.get(group_name='group1')
 	group2 = Group.objects.get(group_name='group2')
 
-	workout1 = Workout.objects.get(group=group1, workout_number=1)
+#	workout1 = Workout.objects.get(group=group1, workout_number=1)
 	workout2 = Workout.objects.get(group=group2, workout_number=1)
 
-	u1 = User(username='Zach', password = 'pass')
-	u1.set_password(u1.password)
-	u1.save()
-	u1 = UserProfile(user = u1, name='Zach', group=group1, current_workout=workout1)
-	u1.save()
+#	u1 = User(username='Zach', password = 'pass')
+#	u1.set_password(u1.password)
+#	u1.save()
+#	u1 = UserProfile(user = u1, name='Zach', group=group1, current_workout=workout1)
+#	u1.save()
 
 	u2 = User(username='Kate', password = 'pass')
 	u2.set_password(u2.password)
@@ -66,10 +66,7 @@ def create_user():
 	u2.save()
 
 
-	#u1 = User(name='Zach', group=group1, current_workout=workout1)
-	#u1.save()
-	#u2 = User(name='Kate', group=group2, current_workout=workout2)
-	#u2.save()
+
 
 if __name__ == "__main__":
 	read_csv_new()
