@@ -11,7 +11,7 @@ def checker(request):
 	time_now = datetime.now().replace(tzinfo=timezone.utc)
 	time = request.user.userprofile.last_workout_completed
 	print (time_now - time)
-	if time_now - time > timedelta(seconds = 12):
+	if time_now - time > timedelta(hours = 12):
 		return True
 	else:
 		return False
