@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Zach's Workout App</title>
+
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link href="{% static 'css/trainer_portal.css' %}" rel="stylesheet" type="text/css" />
+
+    <link href="https://fonts.googleapis.com/css?family=Dosis:800|Luckiest+Guy|Permanent+Marker&display=swap" rel="stylesheet">
+
+  </head>
+
+  <body class='w3-dark-grey w3-margin ' >
+
+<div id="left"></div>
+<div id="right"></div>
+<div id="top"></div>
+<div id="bottom"></div>
+
+
+
+{% for client in clients %}
+
+<div class="w3-card-4" style="margin: 20px">
+
+<header class="w3-container w3-blue">
+  <h1>{{client.username}}</h1>
+</header>
+ <p>  </p>
+
+  <p>last workout date: {{client.userprofile.last_workout_completed}}
+  <p>last workout: {{client.last_workout}}</p>
+  <p>next workout: {{client.current_workout}}</p>
+
+</div>
+
+{% endfor %}
+
+
+  </body>
+</html>
