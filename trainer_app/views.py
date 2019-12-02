@@ -6,12 +6,13 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from datetime import datetime, timezone, timedelta
 from django.core.exceptions import ObjectDoesNotExist
+from django.contrib.auth.models import User
 
 def checker(request):
 	time_now = datetime.now().replace(tzinfo=timezone.utc)
 	time = request.user.userprofile.last_workout_completed
 	print (time_now - time)
-	if time_now - time > timedelta(seconds = 12):
+	if time_now - time > timedelta(seconds = 15):
 		return True
 	else:
 		return False
@@ -112,7 +113,19 @@ def home(request):
 
 	return render(request, 'trainer_app/home.html', context={'ready': ready,'last_workout':last_workout, 'next_workout':next_workout})
 
+def trainer_portal(request):
+	clients = User.objects.all()
+	for client in clients:
+		try:
+			last_workout = Workout.objects.get(workout_number = client.userprofile.current_workout.workout_number-1, group = client.userprofile.group)
+			client.last_workout = [str(exercise) for unit in last_workout.units.all() for exercise in unit.exercises.all()]
+		except:
+			client.last_workout = 'has not yet completed first workout'
 
+		current_workout = Workout.objects.get(workout_number = client.userprofile.current_workout.workout_number, group = client.userprofile.group)
+		client.current_workout = [str(exercise) for unit in current_workout.units.all() for exercise in unit.exercises.all()]
+
+	return render(request, 'trainer_app/trainer_portal.html', context={'clients': clients})
 
 
 	#user_profile = UserProfile.objects.get(name='Zach')

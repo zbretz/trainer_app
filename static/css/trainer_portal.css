@@ -1,0 +1,60 @@
+/*
+a.disabled {
+  pointer-events: none;
+  cursor: default;
+}
+*/
+
+
+.panel {
+  display: none;
+  overflow: hidden;
+}
+
+img {
+  width: 80%;
+}
+
+h3 {
+  color: coral;
+  font-family: 'Permanent Marker', cursive;
+}
+
+
+.heading{
+  color: coral;
+  font-size: 30px;
+  font-family: 'Permanent Marker', cursive;
+}
+
+
+.thing{
+  margin-top: 35px;
+  margin-bottom: -15px;
+  margin-right: 20px;
+  margin-left: 20px;
+  background: #242627;
+}
+
+.complete{
+	margin-top: 35px;
+}
+
+
+#top, #bottom, #left, #right {
+	background: #242627;
+	position: fixed;
+	}
+	#left, #right {
+		top: 0; bottom: 0;
+		width: 18px;
+		}
+		#left { left: 0; }
+		#right { right: 0; }
+		
+	#top, #bottom {
+		left: 0; right: 0;
+		height: 18px;
+		}
+		#top { top: 0; }
+		#bottom { bottom: 0; }
