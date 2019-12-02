@@ -8,28 +8,28 @@
 2,group1,3,pushups,12,,,,
 2,group1,4,trx powerpulls,18,ohp,10,,
 3,group1,3,lat pulldown,12,db upright row,10,,
-3,group1,3,standing cable row (one arm),12,cable pullovers,10,,
-3,group1,3,knee-ups (bench),16,bird dog planks,16,woodchoppers,10
-3,group1,3,machine ham curl,12,forward lunges,12,machine leg press(feet high),25
-3,group1,3,step-ups,12,deficit deadlifts,12,,
-4,group1,3,windshield wipers,12,oblique crunches,16,toe touches,10
+3,group1,3,cable row,12,cable pullover,10,,
+3,group1,3,knee ups,16,bird dog plank,16,woodchoppers,10
+3,group1,3,hamstring curl,12,forward lunge,12,leg press,25
+3,group1,3,step-ups,12,deficit deadlift,12,,
+4,group1,3,windshield wipers,12,oblique crunches,16,toe taps,10
 4,group1,3,t-bar,10,,,,
 4,group1,4,back squat,8,,,,
-4,group1,3,db front raise,12,cable chest press,12,machine pecdeck,12
-4,group1,3,machine leg press,20,bulgarian split squat,8,,
-5,group1,4,pullups / lat-pulldowns,12,,,,
-5,group1,3,swiss ball push-away (forearm plank) (and pike),10,woodchoppers,10,,
-5,group1,3,db rows,10,db curls,10,,
-5,group1,3,slam ball,14,split squats w/ curls/presses,12,,
+4,group1,3,db front raise,12,cable chest press,12,pecdeck,12
+4,group1,3,leg press,20,bulgarian split squat,8,,
+5,group1,4,pullup,12,,,,
+5,group1,3,decline situps,10,woodchoppers,10,,
+5,group1,3,db row,10,db curls,10,,
+5,group1,3,slam ball,14,split squat with curls,12,,
 5,group1,4,trapbar dl,8,,,,
 5,group1,4,front squat,8,,,,
 6,group1,5,bench press,8,,,,
 6,group1,3,bulgarian split squat,7,goblet squat,12,,
 6,group1,4,battle ropes,12 secs,kb swings,12,,
-6,group1,3,db incline bench,10,cable tricep extensions,10,,
-6,group1,3,bb deadlift,8,side lunges,10,,
+6,group1,3,db incline press,10,cable tricep extension,10,,
+6,group1,3,deadlift,8,side lunge,10,,
 7,group1,4,t-bar,10,,,,
-7,group1,4,seated row,12,,,,
+7,group1,4,seated cable row,12,,,,
 7,group1,3,trx rows,12,db curls,10,,
 7,group1,3,three level leg extensions,8,deadbugs,12,glute bridge,10
 7,group1,2,weighted crunches,16,,,,
@@ -38,11 +38,11 @@
 8,group1,3,deficit deadlift,14,,,,
 8,group1,3,leg press,20,,,,
 8,group1,3,push press,12,swing lunges,6,,
-8,group1,3,db incline bench,10,cable tricep extensions,10,,
-8,group1,3,walking lunges,10,side lunges,10,,
+8,group1,3,db incline press,10,cable tricep extension,10,,
+8,group1,3,walking lunges,10,side lunge,10,,
 9,group1,3,oblique crunches,16,renegade rows,16,swiss ball sit-up,16
-9,group1,3,db rows,12,goblet squat,10,,
-9,group1,4,lat pull down,16,,,,
-9,group1,3,bb deadlift,9,,,,
+9,group1,3,db row,12,goblet squat,10,,
+9,group1,4,lat pulldown,16,,,,
+9,group1,3,deadlift,9,,,,
 9,group1,3,db curls,10,db reverse fly,8,,
 9,group1,3,db pullovers,12,,,,

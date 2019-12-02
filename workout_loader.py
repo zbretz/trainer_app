@@ -1,6 +1,8 @@
 import csv
 import os
-os.environ.setdefault('DJANGO_SETTINGS_MODULE','trainer_project.dev_settings')
+
+os.environ.setdefault('DJANGO_SETTINGS_MODULE','trainer_project.prod_settings')
+
 
 import django
 django.setup()
