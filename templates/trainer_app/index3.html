@@ -21,16 +21,95 @@
 <div id="top"></div>
 <div id="bottom"></div>
 
-<div id='' class=" w3-panel w3-light-gray w3-center" style="margin-bottom: -15px">
+<div id='' class=" w3-panel w3-gray w3-center" style="margin-bottom: -15px">
   <p><a id='' href="{% url 'trainer_app:home' %}">Return to Menu</a></p>
   <!-- <p class='w3-small'> go back </p> -->
 </div>
 
 
+<!--------------------------------WARMUP------------------------------------>
+
+<!-- THE ORIGINAL WARMUP SECTION
+<div class="thing w3-center w3-card w3-padding w3-light-gray">
+      <p class='heading' style="color:#4d79ff; font-size:32px;
+  text-shadow:
+   -1px -1px 0 black,  
+    1px -1px 0 black,
+    -1px 1px 0 black,
+     1px 1px 0 black;"> Choose Warmup</p>
+  
+  <div class='w3-panel w3-gray'> trx </div>
+  <div class='w3-panel w3-gray'> movement </div>
+  <div class='w3-panel w3-gray'> machine </div>
+
+</div>
+-->
+
+<div id='extra-warmup' class="thing w3-center w3-card w3-padding w3-light-gray">
+      <p class='heading' style="color:#4d79ff; font-size:32px;
+  text-shadow:
+   -1px -1px 0 black,  
+    1px -1px 0 black,
+    -1px 1px 0 black,
+     1px 1px 0 black;"> Warmup</p>
+
+  {% for category,exercise in warmup.items %}  
+    <div data-warmuptype="{{category}}" style="margin: 2px; padding:4px" class='warmup w3-panel w3-gray'> {{category}}</div>
+  {% endfor %}
+</div>
+
+{% for category,exercise in warmup.items %}
+
+<div id='{{category}}' class="warmup-category hide thing w3-center w3-card w3-padding w3-light-gray">
+      <p class='heading' style="color:#4d79ff; font-size:32px;
+  text-shadow:
+   -1px -1px 0 black,  
+    1px -1px 0 black,
+    -1px 1px 0 black,
+     1px 1px 0 black;"> Extra Credit</p>
+  <p id='warmup-type-heading'>{{category}}
+  
+   <span > <img style="margin:-10px;max-width:15%;height:auto" class='icon w3-grayscale-max' style="width: 60px; margin-right: 10px; margin-top: 10px" src="{% static 'images/yeah-color.png' %}" alt="">
+   </span>
+   </p> 
+  
+  {% for e in exercise %}
+ <div style="margin: 2px; padding:4px" class='w3-panel w3-gray'> {{e}} </div>
+  {% endfor %}
+  <p class='reselect-warmup-btn'> reselect </p>
+</div>
+{% endfor %}
+
+
+
+
+<!--------------------------------HOMEWORK------------------------------------>
+
+
+<div id ='homework' class="thing w3-center w3-card w3-padding" style="margin-bottom:-20px;">
+      <p class='heading' style=" color:#4d79ff; font-size:32px;
+  text-shadow:
+   -1px -1px 0 white,  
+    1px -1px 0 white,
+    -1px 1px 0 white,
+     1px 1px 0 white;"> {{user.username}}'s Homework</p>
+
+     <p class='expand-compress' style="color: coral; font-size:40px; margin-top:6px"> RESISTANCE</p>
+     <p class='expand-compress' style="color: coral; font-size:26px"> Training </p>
+     <p class='expand-compress' style="color: white; font-size:14px; font-family: arial; margin:-6px"> [click to expand]
+     </p>
+     <p class='expand-compress hide'style="color: white; font-size:14px; font-family: arial; margin:-6px"> [click to collapse homework]
+     </p>
+
+</div>
+
+
 {% for each in units %}
 
+  <div class="circuit thing w3-center w3-panel w3-padding w3-display-container">
 
-  <div class="thing w3-center w3-panel w3-padding">
+     <img class='icon w3-display-topright w3-grayscale-max' style="width: 60px; margin-right: 10px; margin-top: 10px" src="{% static 'images/yeah-color.png' %}" alt="">
+
       <p class='heading' >{{each.type}} <span style="color:#4d79ff; font-size:22px"> x {{each.times_to_repeat}} </span> </p>
         {% for e in each.all_exercises %}
       <p class='accordion'>{{e.exercise}}</p>
@@ -46,9 +125,78 @@
         {% endfor %}
   </div>
 
-
-
 {% endfor %}
+
+<!--------------------------------CARDIO------------------------------------>
+
+
+<!--
+<div id='extra-cardio' class="thing w3-center w3-card w3-padding w3-light-gray">
+      <p class='heading' style="color:#4d79ff; font-size:32px;
+  text-shadow:
+   -1px -1px 0 black,  
+    1px -1px 0 black,
+    -1px 1px 0 black,
+     1px 1px 0 black;"> Extra Credit</p>
+  <p>Cardio</p>
+  <div data-cardiotype="fast" style="margin: 2px; padding:4px" class='cardio w3-panel w3-gray'> Fast Burn </div>
+  <div data-cardiotype="smooth" style="margin: 2px; padding:4px" class='cardio w3-panel w3-gray'> Smooth Pace </div>
+  <div data-cardiotype="variety" style="margin: 2px; padding:4px" class='cardio w3-panel w3-gray'> Variety </div>
+</div>
+
+
+<div id='cardio-selection' class="hide thing w3-center w3-card w3-padding w3-light-gray">
+      <p class='heading' style="color:#4d79ff; font-size:32px;
+  text-shadow:
+   -1px -1px 0 black,  
+    1px -1px 0 black,
+    -1px 1px 0 black,
+     1px 1px 0 black;"> Extra Credit</p>
+  <p id='cardio-type-heading'>Cardio</p>
+  <div style="margin: 2px; padding:4px" class='w3-panel w3-gray'> Fn </div>
+  <div style="margin: 2px; padding:4px" class='w3-panel w3-gray'> Smooth Pace </div>
+  <div style="margin: 2px; padding:4px" class='w3-panel w3-gray'> Variety </div>
+</div>
+-->
+
+<div id='extra-cardio' class="thing w3-center w3-card w3-padding w3-light-gray">
+      <p class='heading' style="color:#4d79ff; font-size:32px;
+  text-shadow:
+   -1px -1px 0 black,  
+    1px -1px 0 black,
+    -1px 1px 0 black,
+     1px 1px 0 black;"> Extra Credit</p>
+  <p>Cardio</p>
+
+  {% for category,exercise in cardio.items %}  
+    <div data-cardiotype="{{category}}" style="margin: 2px; padding:4px" class='cardio w3-panel w3-gray'> {{category}}</div>
+  {% endfor %}
+</div>
+
+{% for category,exercise in cardio.items %}
+
+<div id='{{category}}' class="cardio-category hide thing w3-center w3-card w3-padding w3-light-gray">
+      <p class='heading' style="color:#4d79ff; font-size:32px;
+  text-shadow:
+   -1px -1px 0 black,  
+    1px -1px 0 black,
+    -1px 1px 0 black,
+     1px 1px 0 black;"> Extra Credit</p>
+  <p id='cardio-type-heading'>{{category}}
+  
+   <span > <img style="margin:-10px;max-width:15%;height:auto" class='icon w3-grayscale-max' style="width: 60px; margin-right: 10px; margin-top: 10px" src="{% static 'images/yeah-color.png' %}" alt="">
+   </span>
+   </p> 
+  
+  {% for e in exercise %}
+ <div style="margin: 2px; padding:4px" class='w3-panel w3-gray'> {{e}} </div>
+  {% endfor %}
+  <p class='reselect-cardio-btn'> reselect </p>
+</div>
+{% endfor %}
+
+<!--------------------------------MENU/COMPLETE BUTTON------------------------------------>
+
 
 {%if completed %}
 <div id='complete' class=" complete w3-panel w3-padding-24 w3-pale-green w3-center">
@@ -61,7 +209,6 @@
   <!-- <p class='w3-small'> click if complete </p> -->
 </div>
 {% endif %}
-
 
 
 <div id="next" class="status w3-panel w3-red w3-center" style="display:none">
