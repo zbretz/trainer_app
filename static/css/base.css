@@ -5,6 +5,14 @@ a.disabled {
 }
 */
 
+.hide{
+  display: none;
+}
+
+.circuit {
+  display: none;
+}
+
 #footer {
   position: fixed;
   bottom: 40px;

@@ -38,7 +38,18 @@ def current_workout(request):
 
 			unit.all_exercises = Rep_Scheme.objects.filter(unit=unit)
 
-		context_dict = {'units': units, 'workout': workout, 'completed':False}
+		#class Cardio():
+		#	pass
+
+		#cardio = Cardio()
+		#cardio.fast =
+		cardio = {'fast': ['12 mins total. On treadmill: 15 seconds at high speed followed by 45 seconds moderate speed. Repeat 12 times.'],
+		'smooth':['20min on one of: row, elliptical, treadmill, or stairs'],
+		'variety': ['treadmill - 7min max incline walk', 'stairs - 7min', 'elliptical - 7min']}
+
+		warmup = {'trx':['first', 'second', 'third', 'fourth'], 'barbell': ['one', 'two', 'three'], 'movement': ['first', 'second', 'third', 'fourth'], 'machine':['5 min on elliptical or row']}
+
+		context_dict = {'warmup':warmup, 'cardio': cardio, 'units': units, 'workout': workout, 'completed':False}
 
 		return render(request, 'trainer_app/index3.html', context=context_dict)
 

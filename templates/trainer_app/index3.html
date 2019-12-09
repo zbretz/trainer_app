@@ -74,13 +74,21 @@
    </p> 
   
   {% for e in exercise %}
- <div style="margin: 2px; padding:4px" class='w3-panel w3-gray'> {{e}} </div>
+ <div style="margin: 2px; padding:4px" class='accordion w3-panel w3-gray'> {{e}} </div>
+  
+  <span></span>
+  <div class="panel">
+          <img src="{% static 'images/yeah-color.png' %}" >
+  </div>
   {% endfor %}
   <p class='reselect-warmup-btn'> reselect </p>
 </div>
 {% endfor %}
 
 
+
+
+      
 
 
 <!--------------------------------HOMEWORK------------------------------------>
@@ -189,7 +197,13 @@
    </p> 
   
   {% for e in exercise %}
- <div style="margin: 2px; padding:4px" class='w3-panel w3-gray'> {{e}} </div>
+
+  <div style="margin: 2px; padding:4px" class='accordion w3-panel w3-gray'> {{e}} </div>
+  
+  <span></span>
+  <div class="panel">
+          <img src="{% static 'images/yeah-color.png' %}" >
+  </div>
   {% endfor %}
   <p class='reselect-cardio-btn'> reselect </p>
 </div>
