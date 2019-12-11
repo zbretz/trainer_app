@@ -5,6 +5,16 @@ a.disabled {
 }
 */
 
+#footer {
+  position: fixed;
+  bottom: 40px;
+  width:100%;
+  right: 0;
+    left: 0;
+    margin-right: auto;
+    margin-left: auto;
+
+}
 
 .panel {
   display: none;
