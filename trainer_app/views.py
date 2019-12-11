@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from trainer_app.models import Workout, UserProfile, Unit, Rep_Scheme
+from trainer_app.models import Workout, UserProfile, Unit, Rep_Scheme, CircuitComplete
 from django.urls import reverse
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
@@ -178,6 +178,21 @@ def user_login(request):
 
 	else:
 		return render(request, 'trainer_app/login.html')
+
+def circuit_complete_tracker(request):
+	unit_id = request.GET['unit_id']
+	try:
+		unit = Unit.objects.get(id=int(unit_id))
+	except Unit.DoesNotExist:
+		return HttpResponse(-1)
+	except ValueError:
+		return HttpResponse(-1)
+
+	circuit_complete = CircuitComplete(user = request.user, workout = request.user.userprofile.current_workout,
+		unit = unit)
+	circuit_complete.save()
+
+	return HttpResponse(str(unit_id) + str(request.user))
 
 def log_workout_time(request):
 	user_profile = request.user.userprofile

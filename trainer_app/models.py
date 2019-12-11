@@ -52,6 +52,14 @@ class UserProfile(models.Model):
 
 	def __str__(self):
 		return self.user.username
+
+class CircuitComplete(models.Model):
+	user = models.ForeignKey(User, on_delete=models.CASCADE)
+	workout = models.ForeignKey(Workout, on_delete=models.CASCADE)
+	unit = models.ForeignKey(Unit, on_delete=models.CASCADE)
+	date_time = models.DateTimeField(default=datetime.now())
+
+
 #class Workout_Log(models.Model):
 #	workout = models.ForeignKey(Workout, on_delete=models.CASCADE)
 #	user = models.ForeignKey(User, on_delete=models.CASCADE)

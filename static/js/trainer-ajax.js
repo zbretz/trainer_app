@@ -1,7 +1,14 @@
 
 $(document).ready(function() {
 
-
+$('.icon').click(function() {
+    var unit_id_var;
+    unit_id_var = $(this).attr('data-unitid');
+    $.get('/circuit_complete',
+        {'unit_id': unit_id_var}, function(data) {
+            alert(data)
+    })
+});
 
 
 var allimages= document.getElementsByTagName('img');
@@ -10,6 +17,8 @@ var allimages= document.getElementsByTagName('img');
             allimages[i].setAttribute('src', allimages[i].getAttribute('data-src'));
         }
     }
+
+
 
 
 /*

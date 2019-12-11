@@ -116,7 +116,7 @@
 
   <div class="circuit thing w3-center w3-panel w3-padding w3-display-container">
 
-     <img class='icon w3-display-topright w3-grayscale-max' style="width: 60px; margin-right: 10px; margin-top: 10px" src="{% static 'images/yeah-color.png' %}" alt="">
+     <img id='complete_btn' class='icon w3-display-topright w3-grayscale-max' style="width: 60px; margin-right: 10px; margin-top: 10px" src="{% static 'images/yeah-color.png' %}" alt="" data-unitid="{{each.id}}">
 
       <p class='heading' >{{each.type}} <span style="color:#4d79ff; font-size:22px"> x {{each.times_to_repeat}} </span> </p>
         {% for e in each.all_exercises %}

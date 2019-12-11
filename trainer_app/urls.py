@@ -13,5 +13,5 @@ urlpatterns = [
     path('time_check', views.time_check, name='time_check'),
     path('log_workout_time', views.log_workout_time, name='log_workout_time'),
     path('trainer_portal', views.trainer_portal, name='trainer_portal'),
-
+    path('circuit_complete', views.circuit_complete_tracker, name = 'circuit_complete')
 ]
