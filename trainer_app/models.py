@@ -59,6 +59,9 @@ class CircuitComplete(models.Model):
 	unit = models.ForeignKey(Unit, on_delete=models.CASCADE)
 	date_time = models.DateTimeField(default=datetime.now())
 
+	def __str__(self):
+		return "unit :" + self.unit + ", date/time: " + self.date_time
+
 
 #class Workout_Log(models.Model):
 #	workout = models.ForeignKey(Workout, on_delete=models.CASCADE)
