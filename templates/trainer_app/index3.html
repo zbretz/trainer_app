@@ -53,34 +53,33 @@
     -1px 1px 0 black,
      1px 1px 0 black;"> Warmup</p>
 
-  {% for category,exercise in warmup.items %}  
-    <div data-warmuptype="{{category}}" style="margin: 2px; padding:4px" class='warmup w3-panel w3-gray'> {{category}}</div>
+
+  {% for each in warmup %}  
+    <div data-warmuptype="{{each.exercises.first}}" style="margin: 2px; padding:4px" class='warmup w3-panel w3-gray'> {{each.exercises.first}}</div>
   {% endfor %}
 </div>
 
-{% for category,exercise in warmup.items %}
+{% for each in warmup %}
 
-<div id='{{category}}' class="warmup-category hide thing w3-center w3-card w3-padding w3-light-gray">
+<div id='{{each.exercises.first.name}}' class="warmup-category hide thing w3-center w3-card w3-padding w3-light-gray">
       <p class='heading' style="color:#4d79ff; font-size:32px;
   text-shadow:
    -1px -1px 0 black,  
     1px -1px 0 black,
     -1px 1px 0 black,
      1px 1px 0 black;"> Extra Credit</p>
-  <p id='warmup-type-heading'>{{category}}
+  <p id='warmup-type-heading'>{{exercise.name}}
   
-   <span > <img style="margin:-10px;max-width:15%;height:auto" class='icon w3-grayscale-max' style="width: 60px; margin-right: 10px; margin-top: 10px" src="{% static 'images/yeah-color.png' %}" alt="">
+   <span > <img style="margin:-10px;max-width:15%;height:auto" class='icon w3-grayscale-max' style="width: 60px; margin-right: 10px; margin-top: 10px" src="{% static 'images/yeah-color.png' %}" alt="" data-unitid="{{each.id}}">
    </span>
    </p> 
+ 
   
-  {% for e in exercise %}
- <div style="margin: 2px; padding:4px" class='accordion w3-panel w3-gray'> {{e}} </div>
-  
-  <span></span>
-  <div class="panel">
-          <img src="{% static 'images/yeah-color.png' %}" >
-  </div>
-  {% endfor %}
+  <video id='vid' width="240" height="240" loop controls autoplay muted>
+          <source src="{{ MEDIA_URL }}{{each.exercises.first.image}}" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+
   <p class='reselect-warmup-btn'> reselect </p>
 </div>
 {% endfor %}

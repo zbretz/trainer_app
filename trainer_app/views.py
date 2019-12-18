@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from trainer_app.models import Workout, UserProfile, Unit, Rep_Scheme, CircuitComplete
+from trainer_app.models import Workout, UserProfile, Unit, Rep_Scheme, CircuitComplete, Exercise
 from django.urls import reverse
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
@@ -38,16 +38,14 @@ def current_workout(request):
 
 			unit.all_exercises = Rep_Scheme.objects.filter(unit=unit)
 
-		#class Cardio():
-		#	pass
 
-		#cardio = Cardio()
-		#cardio.fast =
 		cardio = {'fast': ['12 mins total. On treadmill: 15 seconds at high speed followed by 45 seconds moderate speed. Repeat 12 times.'],
 		'smooth':['20min on one of: row, elliptical, treadmill, or stairs'],
 		'variety': ['treadmill - 7min max incline walk', 'stairs - 7min', 'elliptical - 7min']}
 
-		warmup = {'trx':['first', 'second', 'third', 'fourth'], 'barbell': ['one', 'two', 'three'], 'movement': ['first', 'second', 'third', 'fourth'], 'machine':['5 min on elliptical or row']}
+		#warmup = {'trx':['first', 'second', 'third', 'fourth'], 'barbell': ['one', 'two', 'three'], 'movement': ['first', 'second', 'third', 'fourth'], 'machine':['5 min on elliptical or row']}
+		#warmup = [Exercise.objects.get(name=exercise_name) for exercise_name in ['trx', 'barbell', 'machine', 'movement']]
+		warmup = Unit.objects.all()[67:71]
 
 		context_dict = {'warmup':warmup, 'cardio': cardio, 'units': units, 'workout': workout, 'completed':False}
 
