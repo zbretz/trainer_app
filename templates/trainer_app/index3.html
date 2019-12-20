@@ -14,14 +14,13 @@
 
   </head>
 
-  <body class='w3-dark-grey w3-margin ' >
+  <body >
 
-<div id="left"></div>
-<div id="right"></div>
-<div id="top"></div>
-<div id="bottom"></div>
 
-<div id='' class=" w3-panel w3-gray w3-center" style="margin-bottom: -15px">
+<div class='w3-dark-grey' style="border:16px solid #242627;max-width:425px;">
+
+
+<div id='' class="w3-gray w3-center w3-padding-16" style="margin-bottom: -15px">
   <p><a id='' href="{% url 'trainer_app:home' %}">Return to Menu</a></p>
   <!-- <p class='w3-small'> go back </p> -->
 </div>
@@ -217,7 +216,7 @@
   <!-- <p class='w3-small'> go back </p> -->
 </div>
 {% else %}
-<div id='complete' class="complete w3-panel w3-padding-24 w3-pale-green w3-center">
+<div id='complete' class="complete w3-padding-24 w3-pale-green w3-center">
   <p><a id='next_button' href="{% url 'trainer_app:workout_complete' %}">Workout Complete.</a></p>
   <!-- <p class='w3-small'> click if complete </p> -->
 </div>
@@ -234,6 +233,6 @@
 <script src="{% static 'js/trainer-jquery.js' %}" crossorigin="anonymous"></script>
 <script src="{% static 'js/trainer-ajax.js' %}" crossorigin="anonymous"></script>
 
-
+	</div>
   </body>
 </html>
