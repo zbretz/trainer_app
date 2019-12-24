@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+
+{% load staticfiles %}
+<html>
+  <head>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link href="https://fonts.googleapis.com/css?family=Barlow&display=swap" rel="stylesheet">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>repl.it</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+
+    <style>
+      h3, p {
+  font-family: 'Barlow', serif;
+}
+</style>
+  </head>
+  <body" >
+    <div class="w3-border" style="max-width:375px; background-color:rgb(243,243,243)" >
+    
+    <div class='w3-row'>
+
+          <img src="{% static 'body.png' %}" style="display: block;margin-left: auto;margin-right: auto; width: 50%">
+          
+    </div>
+
+  <div class="w3-row">
+      <div class="w3-col s6 w3-center"><p >about</p></div>
+     <div class="w3-col s6 w3-center"><p>workouts</p></div>
+    </div>
+
+{% for program in programs  %}
+
+ 
+<div style='margin-bottom:-40px'class="w3-row w3-padding-16">
+
+  <div class='w3-margin w3-border-top'>
+  </div>
+  <h3 class='w3-center' style="margin:0px"><strong>{{program.group_name}}</strong></h3>
+  <div class="w3-col w3-container s4 l3 ">
+    <div>
+   
+    </strong></div>
+    <div>
+   <img style="margin-left:-4px; width: 130%"src="{% static 'bb-image.png' %}" >
+    </div>
+  </div>
+  <div class="w3-col w3-container s8 l9">  
+    <p> {{program.description}} </p>
+  </div>
+
+</div>
+
+
+{% endfor %}
+</br>
+</br>
+
+</div>
+
+
+
+
+
+
+    <script src="script.js"></script>
+  </body>
+</html>
+

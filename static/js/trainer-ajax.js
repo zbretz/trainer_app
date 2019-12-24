@@ -10,6 +10,16 @@ $('.icon').click(function() {
     })
 });
 
+    $('.assign-program-btn').click(function() {
+    var group_id_var;
+    group_id_var = $(this).attr('data-groupid');
+    var user_id_var;
+    user_id_var = $(this).attr('data-userid');
+    $.get('/reassign_group', {'user_id': user_id_var, 'group_id': group_id_var}, function(data) {
+            alert(data)
+        })
+    })
+
 
 var allimages= document.getElementsByTagName('img');
     for (var i=0; i<allimages.length; i++) {

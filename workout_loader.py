@@ -10,7 +10,7 @@ from trainer_app.models import *
 from django.contrib.auth.models import User
 
 def read_csv_new():
-	with open('sample3.csv', newline = '') as f:
+	with open('workout_programs/sample4.csv', newline = '') as f:
 		reader = csv.reader(f)
 
 		for row in reader:

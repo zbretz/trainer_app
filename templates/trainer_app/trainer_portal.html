@@ -30,7 +30,16 @@
 <header class="w3-container w3-blue" style="margin: 10px">
   <h1>{{client.username}}</h1>
 </header>
- <p>  </p>
+  {{client.userprofile.group.group_name}} 
+
+ <div class="w3-dropdown-click">
+  <button onclick="myFunction({{client.id}})" class="w3-button w3-black">Assign Program</button>
+  <div id="{{client.id}}" class="w3-dropdown-content w3-bar-block w3-border">
+    {% for program in programs %}
+    <a href="#" class="assign-program-btn w3-bar-item w3-button" data-userid="{{client.id}}" data-groupid="{{ program.id }}">{{program.group_name}}</a>
+    {% endfor %}
+  </div>
+</div>
 
   <p>last workout date: {{client.userprofile.last_workout_completed}}
   <p>last workout: {{client.last_workout}}</p>
@@ -40,6 +49,18 @@
 
 {% endfor %}
 
+<script>
+function myFunction(client_id) {
+  var x = document.getElementById(client_id);
+  if (x.className.indexOf("w3-show") == -1) { 
+    x.className += " w3-show";
+  } else {
+    x.className = x.className.replace(" w3-show", "");
+  }
+}
+</script>
 
+<script src="{% static 'js/jquery-3.3.1.min.js' %}" crossorigin="anonymous"></script>
+<script src="{% static 'js/trainer-ajax.js' %}" crossorigin="anonymous"></script>
   </body>
 </html>

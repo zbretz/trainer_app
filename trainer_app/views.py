@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from trainer_app.models import Workout, UserProfile, Unit, Rep_Scheme, CircuitComplete, Exercise
+from trainer_app.models import Workout, UserProfile, Trainer, Unit, Rep_Scheme, CircuitComplete,Group, Exercise
 from django.urls import reverse
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
@@ -16,6 +16,31 @@ def checker(request):
 		return True
 	else:
 		return False
+
+#def trainer_page(request):
+def programs(request):
+	zach = User.objects.get(username='Zach')
+	zach = Trainer.objects.get(trainer=zach)
+	programs = Group.objects.filter(trainer=zach)
+	workouts = [workout for program in programs for workout in Workout.objects.filter(group=program)] 
+
+	for program in programs:
+		program.workouts = [workout for program in programs for workout in Workout.objects.filter(group=program)] 
+
+	return render(request, 'trainer_app/programs2.html', context={'workouts':workouts, 'programs':programs})
+
+def all_programs(request):
+
+	programs = Group.objects.all()
+	workouts = [workout for program in programs for workout in Workout.objects.filter(group=program)] 
+
+	for program in programs:
+		program.workouts = [workout for program in programs for workout in Workout.objects.filter(group=program)[:1]] 
+
+	trainers = Trainer.objects.all()
+	print(trainers)
+
+	return render(request, 'trainer_app/programs3.html', context={'workouts':workouts, 'programs':programs, 'trainers':trainers})
 
 @login_required
 def current_workout(request):
@@ -124,6 +149,7 @@ def home(request):
 
 def trainer_portal(request):
 	clients = User.objects.all()
+	workout_programs = Group.objects.all()
 	for client in clients:
 		try:
 			last_workout = Workout.objects.get(workout_number = client.userprofile.current_workout.workout_number-1, group = client.userprofile.group)
@@ -134,7 +160,7 @@ def trainer_portal(request):
 		current_workout = Workout.objects.get(workout_number = client.userprofile.current_workout.workout_number, group = client.userprofile.group)
 		client.current_workout = [str(exercise) for unit in current_workout.units.all() for exercise in unit.exercises.all()]
 
-	return render(request, 'trainer_app/trainer_portal.html', context={'clients': clients})
+	return render(request, 'trainer_app/trainer_portal.html', context={'clients': clients, 'programs': workout_programs})
 
 
 	#user_profile = UserProfile.objects.get(name='Zach')
@@ -210,3 +236,19 @@ def time_check(request):
 def user_logout(request):
 	logout(request)
 	return redirect(reverse('trainer_app:login'))
+
+def reassign_group(request):
+	user_id = request.GET['user_id']
+	group_id = request.GET['group_id']
+	try:
+		new_group = Group.objects.get(id=int(group_id))
+	except Unit.DoesNotExist:
+		return HttpResponse(-1)
+	except ValueError:
+		return HttpResponse(-1)
+
+	user_profile = User.objects.get(id=user_id).userprofile
+	user_profile.group = new_group
+	user_profile.save()
+
+	return HttpResponse('new group: ' + new_group.group_name)
