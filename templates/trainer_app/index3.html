@@ -8,204 +8,124 @@
     <title>Zach's Workout App</title>
 
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <link href="{% static 'css/base.css' %}" rel="stylesheet" type="text/css" />
+    
+    <link href="https://fonts.googleapis.com/css?family=Barlow&display=swap" rel="stylesheet">
 
     <link href="https://fonts.googleapis.com/css?family=Dosis:800|Luckiest+Guy|Permanent+Marker&display=swap" rel="stylesheet">
+
+
+<style type="">
+  
+h3, p {
+  font-family: 'Barlow', serif;
+}
+
+.fixed {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  border: 3px solid #c20034;
+  display:none;
+}
+
+video {
+display: block;
+width:100%;
+margin-top: 50px;
+margin-left: auto;
+margin-right: auto;
+}
+
+</style>
+
+
+
 
   </head>
 
   <body >
 
 
-<div class='w3-dark-grey' style="border:16px solid #242627;max-width:425px;">
 
+<div class="w3-border" style="max-width:375px; background-color:rgb(243,243,243)" >
+    
+    <div class='w3-row'>
 
-<div id='' class="w3-gray w3-center w3-padding-16" style="margin-bottom: -15px">
-  <p><a id='' href="{% url 'trainer_app:home' %}">Return to Menu</a></p>
-  <!-- <p class='w3-small'> go back </p> -->
-</div>
+          <img src="{% static 'images/body.png' %}" style="display: block;margin-left: auto;margin-right: auto; width: 50%">
+          
+    </div>
 
+  <div class="w3-row">
+      <div class="w3-col s6 w3-center"><p >about</p></div>
+     <div class="w3-col s6 w3-center"><p>workouts</p></div>
+    </div>
 
-<!--------------------------------WARMUP------------------------------------>
-
-<!-- THE ORIGINAL WARMUP SECTION
-<div class="thing w3-center w3-card w3-padding w3-light-gray">
-      <p class='heading' style="color:#4d79ff; font-size:32px;
-  text-shadow:
-   -1px -1px 0 black,  
-    1px -1px 0 black,
-    -1px 1px 0 black,
-     1px 1px 0 black;"> Choose Warmup</p>
-  
-  <div class='w3-panel w3-gray'> trx </div>
-  <div class='w3-panel w3-gray'> movement </div>
-  <div class='w3-panel w3-gray'> machine </div>
-
-</div>
--->
-
-<div id='extra-warmup' class="thing w3-center w3-card w3-padding w3-light-gray">
-      <p class='heading' style="color:#4d79ff; font-size:32px;
-  text-shadow:
-   -1px -1px 0 black,  
-    1px -1px 0 black,
-    -1px 1px 0 black,
-     1px 1px 0 black;"> Warmup</p>
-
-
-  {% for each in warmup %}  
-    <div data-warmuptype="{{each.exercises.first}}" style="margin: 2px; padding:4px" class='warmup w3-panel w3-gray'> {{each.exercises.first}}</div>
-  {% endfor %}
-</div>
-
-{% for each in warmup %}
-
-<div id='{{each.exercises.first.name}}' class="warmup-category hide thing w3-center w3-card w3-padding w3-light-gray">
-      <p class='heading' style="color:#4d79ff; font-size:32px;
-  text-shadow:
-   -1px -1px 0 black,  
-    1px -1px 0 black,
-    -1px 1px 0 black,
-     1px 1px 0 black;"> Extra Credit</p>
-  <p id='warmup-type-heading'>{{exercise.name}}
-  
-   <span > <img style="margin:-10px;max-width:15%;height:auto" class='icon w3-grayscale-max' style="width: 60px; margin-right: 10px; margin-top: 10px" src="{% static 'images/yeah-color.png' %}" alt="" data-unitid="{{each.id}}">
-   </span>
-   </p> 
- 
-  
-  <video id='vid' width="240" height="240" loop controls autoplay muted>
-          <source src="{{ MEDIA_URL }}{{each.exercises.first.image}}" type="video/mp4">
-          Your browser does not support the video tag.
-        </video>
-
-  <p class='reselect-warmup-btn'> reselect </p>
-</div>
-{% endfor %}
-
-
-
-
-      
-
-
-<!--------------------------------HOMEWORK------------------------------------>
-
-
-<div id ='homework' class="thing w3-center w3-card w3-padding" style="margin-bottom:-20px;">
-      <p class='heading' style=" color:#4d79ff; font-size:32px;
-  text-shadow:
-   -1px -1px 0 white,  
-    1px -1px 0 white,
-    -1px 1px 0 white,
-     1px 1px 0 white;"> {{user.username}}'s Homework</p>
-
-     <p class='expand-compress' style="color: coral; font-size:40px; margin-top:6px"> RESISTANCE</p>
-     <p class='expand-compress' style="color: coral; font-size:26px"> Training </p>
-     <p class='expand-compress' style="color: white; font-size:14px; font-family: arial; margin:-6px"> [click to expand]
-     </p>
-     <p class='expand-compress hide'style="color: white; font-size:14px; font-family: arial; margin:-6px"> [click to collapse homework]
-     </p>
-
-</div>
-
-
-{% for each in units %}
-
-  <div class="circuit thing w3-center w3-panel w3-padding w3-display-container">
-
-     <img id='complete_btn' class='icon w3-display-topright w3-grayscale-max' style="width: 60px; margin-right: 10px; margin-top: 10px" src="{% static 'images/yeah-color.png' %}" alt="" data-unitid="{{each.id}}">
-
-      <p class='heading' >{{each.type}} <span style="color:#4d79ff; font-size:22px"> x {{each.times_to_repeat}} </span> </p>
-        {% for e in each.all_exercises %}
-      <p class='accordion'>{{e.exercise}}</p>
-
-      <p style="margin-top:-15px; font-family: 'arial', sans-serif; font-size:14px; color:yellow ">{{e.reps}} reps </p>
-
-      <div class="panel">
-        <video id='vid' width="240" height="240" loop controls autoplay muted>
-          <source src="{{ MEDIA_URL }}{{e.exercise.image}}" type="video/mp4">
-          Your browser does not support the video tag.
-        </video>
+       <div class='w3-margin w3-border-top'>
       </div>
-        {% endfor %}
+
+<div class="w3-row">
+  
+  <h3 class="w3-center" style="margin:0px"><strong>Phase1</strong></h3>
+
+  <div class="w3-col w3-container s4 l3 ">
+    <div>
+    
+    <p style="margin:0px"><strong>149.99</p>
+    </strong>
+    </div>
+    <div>
+   <img style="margin-left:-4px; width: 130%"src="{% static 'images/bb-image.png' %}">
+    </div>
+  </div>
+  <div class="w3-col w3-container s8 l9">  
+    <p>This part will occupy 12 columns on a small screen, 8 on a medium screen, and 9 on a large screen.</p>
+    <p>This part will occupy 12 columns on a small screen, 8 on a medium screen, and 9 on a large screen.</p>
   </div>
 
-{% endfor %}
-
-<!--------------------------------CARDIO------------------------------------>
-
-
-<!--
-<div id='extra-cardio' class="thing w3-center w3-card w3-padding w3-light-gray">
-      <p class='heading' style="color:#4d79ff; font-size:32px;
-  text-shadow:
-   -1px -1px 0 black,  
-    1px -1px 0 black,
-    -1px 1px 0 black,
-     1px 1px 0 black;"> Extra Credit</p>
-  <p>Cardio</p>
-  <div data-cardiotype="fast" style="margin: 2px; padding:4px" class='cardio w3-panel w3-gray'> Fast Burn </div>
-  <div data-cardiotype="smooth" style="margin: 2px; padding:4px" class='cardio w3-panel w3-gray'> Smooth Pace </div>
-  <div data-cardiotype="variety" style="margin: 2px; padding:4px" class='cardio w3-panel w3-gray'> Variety </div>
 </div>
 
 
-<div id='cardio-selection' class="hide thing w3-center w3-card w3-padding w3-light-gray">
-      <p class='heading' style="color:#4d79ff; font-size:32px;
-  text-shadow:
-   -1px -1px 0 black,  
-    1px -1px 0 black,
-    -1px 1px 0 black,
-     1px 1px 0 black;"> Extra Credit</p>
-  <p id='cardio-type-heading'>Cardio</p>
-  <div style="margin: 2px; padding:4px" class='w3-panel w3-gray'> Fn </div>
-  <div style="margin: 2px; padding:4px" class='w3-panel w3-gray'> Smooth Pace </div>
-  <div style="margin: 2px; padding:4px" class='w3-panel w3-gray'> Variety </div>
-</div>
--->
+</br>
+{% for each in units %}
+<div class="w3-container">
+    <div class="w3-card-4 w3-white" style="width:100%">
+    <header class="w3-container w3-light-grey">
+      <h3>{{each.type}} x {{each.times_to_repeat}}</h3>
+    </header>
+    <div class="w3-container">
+       {% for e in each.all_exercises %}
+      <p data-exerciseid="{{ exercise.id }}" class='flip'>{{e.exercise}} x {{e.reps}}</p>
+      <hr>
 
-<div id='extra-cardio' class="thing w3-center w3-card w3-padding w3-light-gray">
-      <p class='heading' style="color:#4d79ff; font-size:32px;
-  text-shadow:
-   -1px -1px 0 black,  
-    1px -1px 0 black,
-    -1px 1px 0 black,
-     1px 1px 0 black;"> Extra Credit</p>
-  <p>Cardio</p>
-
-  {% for category,exercise in cardio.items %}  
-    <div data-cardiotype="{{category}}" style="margin: 2px; padding:4px" class='cardio w3-panel w3-gray'> {{category}}</div>
-  {% endfor %}
+<div id="{{ exercise.id }}" style="color: gray;background-color:#2a2a2a" class="fixed w3-round-large">
+<video  controls>
+<source src="{{ MEDIA_URL }}{{e.exercise.image}}" type="video/mp4">
+Your browser does not support HTML5 video.
+</video>
+<p class='w3-container'style="background-color:#2a2a2a">An element with position: fixed; is positioned relative to the viewport, which means it always stays in the same place even if the page is scrolled:</p>
 </div>
 
-{% for category,exercise in cardio.items %}
-
-<div id='{{category}}' class="cardio-category hide thing w3-center w3-card w3-padding w3-light-gray">
-      <p class='heading' style="color:#4d79ff; font-size:32px;
-  text-shadow:
-   -1px -1px 0 black,  
-    1px -1px 0 black,
-    -1px 1px 0 black,
-     1px 1px 0 black;"> Extra Credit</p>
-  <p id='cardio-type-heading'>{{category}}
-  
-   <span > <img style="margin:-10px;max-width:15%;height:auto" class='icon w3-grayscale-max' style="width: 60px; margin-right: 10px; margin-top: 10px" src="{% static 'images/yeah-color.png' %}" alt="">
-   </span>
-   </p> 
-  
-  {% for e in exercise %}
-
-  <div style="margin: 2px; padding:4px" class='accordion w3-panel w3-gray'> {{e}} </div>
-  
-  <span></span>
-  <div class="panel">
-          <img src="{% static 'images/yeah-color.png' %}" >
+      {% endfor %}
+    </div>
   </div>
-  {% endfor %}
-  <p class='reselect-cardio-btn'> reselect </p>
 </div>
+</br>
 {% endfor %}
+
+
+
+      <p> {{e.exercise}}</p>
+      <p>{{e.reps}} reps </p>
+
+
+ 
+
+
+</div>
+
+
 
 <!--------------------------------MENU/COMPLETE BUTTON------------------------------------>
 
@@ -232,6 +152,61 @@
 <script src="{% static 'js/jquery-3.3.1.min.js' %}" crossorigin="anonymous"></script>
 <script src="{% static 'js/trainer-jquery.js' %}" crossorigin="anonymous"></script>
 <script src="{% static 'js/trainer-ajax.js' %}" crossorigin="anonymous"></script>
+
+
+<!---put this into jquery file 
+
+<script>
+  $(document).ready(function(){
+  var video_active = false;
+
+  $(".flip").click(function(video_active){
+    $(".fixed").slideDown("slow");
+    video_active = true;
+
+   $(window).scroll(function() {
+    if (video_active == true){
+      $(".fixed").slideUp("slow")
+      }
+    });
+  })
+
+  var backgroundwidth = $("#background").width();  
+  $(".fixed").width(backgroundwidth);        
+ });
+</script>
+
+end jquery file -->
+
+
+<!---put this into jquery file --->
+<script>
+  $(document).ready(function(){
+  var video_active = false;
+
+  $(".flip").click(function(video_active){
+
+
+    var panel = this.nextElementSibling.nextElementSibling
+
+    $(panel).slideDown("slow");
+    video_active = true;
+
+   $(window).scroll(function() {
+    if (video_active == true){
+      $(panel).slideUp("slow")
+      }
+    });
+  })
+
+  var backgroundwidth = $("#background").width();  
+  $(".fixed").width(backgroundwidth);        
+ });
+</script>
+<!-- end jquery file -->
+
+
+
 
 	</div>
   </body>

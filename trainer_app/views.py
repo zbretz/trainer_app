@@ -45,7 +45,7 @@ def current_workout(request):
 
 		#warmup = {'trx':['first', 'second', 'third', 'fourth'], 'barbell': ['one', 'two', 'three'], 'movement': ['first', 'second', 'third', 'fourth'], 'machine':['5 min on elliptical or row']}
 		#warmup = [Exercise.objects.get(name=exercise_name) for exercise_name in ['trx', 'barbell', 'machine', 'movement']]
-		warmup = Unit.objects.all()[67:71]
+		warmup = Unit.objects.all()[60:64]
 
 		context_dict = {'warmup':warmup, 'cardio': cardio, 'units': units, 'workout': workout, 'completed':False}
 
