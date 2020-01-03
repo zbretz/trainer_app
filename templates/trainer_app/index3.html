@@ -10,15 +10,26 @@
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     
     <link href="https://fonts.googleapis.com/css?family=Barlow&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Chivo:300,400,700,900|Open+Sans:400,700" rel="stylesheet">
 
     <link href="https://fonts.googleapis.com/css?family=Dosis:800|Luckiest+Guy|Permanent+Marker&display=swap" rel="stylesheet">
 
 
 <style type="">
   
+#complete-button{
+  font-family: "Chivo", sans-serif;
+}
+
+a {
+  text-decoration: none
+}
+
 h3, p {
   font-family: 'Barlow', serif;
 }
+
+
 
 .fixed {
   position: fixed;
@@ -50,7 +61,7 @@ margin-right: auto;
 
 
 <div class="w3-border" style="max-width:375px; background-color:rgb(243,243,243)" >
-    
+
     <div class='w3-row'>
 
           <img src="{% static 'images/body.png' %}" style="display: block;margin-left: auto;margin-right: auto; width: 50%">
@@ -92,7 +103,7 @@ margin-right: auto;
 <div class="w3-container">
     <div class="w3-card-4 w3-white" style="width:100%">
     <header class="w3-container w3-light-grey">
-      <h3>{{each.type}} x {{each.times_to_repeat}}</h3>
+      <h3>{{each.type}} x {{each.times_to_repeat}} reps</h3>
     </header>
     <div class="w3-container">
        {% for e in each.all_exercises %}
@@ -100,7 +111,7 @@ margin-right: auto;
       <hr>
 
 <div id="{{ exercise.id }}" style="color: gray;background-color:#2a2a2a" class="fixed w3-round-large">
-<video  controls>
+<video autoplay loop muted controls>
 <source src="{{ MEDIA_URL }}{{e.exercise.image}}" type="video/mp4">
 Your browser does not support HTML5 video.
 </video>
@@ -116,14 +127,7 @@ Your browser does not support HTML5 video.
 
 
 
-      <p> {{e.exercise}}</p>
-      <p>{{e.reps}} reps </p>
-
-
- 
-
-
-</div>
+<!---last div should go here-->
 
 
 
@@ -136,11 +140,21 @@ Your browser does not support HTML5 video.
   <!-- <p class='w3-small'> go back </p> -->
 </div>
 {% else %}
-<div id='complete' class="complete w3-padding-24 w3-pale-green w3-center">
-  <p><a id='next_button' href="{% url 'trainer_app:workout_complete' %}">Workout Complete.</a></p>
+<div id='complete' class='w3-margin w3-round w3-padding w3-center' style='margin: auto;font-family: "Chivo", sans-serif;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 14px;
+    text-transform: uppercase;
+    color: #fff;
+    background-color: #f00;
+    padding: 15px;'>
+  <p id='complete-button' class="" style= ""><a id='next_button' href="{% url 'trainer_app:workout_complete' %}">Log Workout!</a></p>
   <!-- <p class='w3-small'> click if complete </p> -->
 </div>
 {% endif %}
+
+<!--last div (temp) -->
+</div>
 
 
 <div id="next" class="status w3-panel w3-red w3-center" style="display:none">
