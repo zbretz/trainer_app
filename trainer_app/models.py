@@ -36,15 +36,30 @@ class Rep_Scheme(models.Model):
 
 class Group(models.Model):
 	group_name = models.CharField(max_length=128, default='sample')
+	
+	def __str__(self):
+		return self.group_name
 
 class Workout(models.Model):
 	units = models.ManyToManyField(Unit)
 	workout_number = models.IntegerField(default=1)
 	group = models.ForeignKey(Group, null=True, on_delete=models.CASCADE)
 
+#combine with userprofile? 
+class WorkoutLog(models.Model):
+	user = models.ForeignKey(User, null=True, on_delete=models.CASCADE)
+	#group is redundant since it's in workout
+	group = models.ForeignKey(Group, null=True, on_delete=models.CASCADE)
+	workout = models.ForeignKey(Workout, null=True, on_delete=models.CASCADE)
+	date_performed = models.DateTimeField(null=True)
+	
+	#def __str__(self):
+	#	return self.group.group_name + ' ' + str(self.workout.workout_number) + ' ' + self.date_performed
+
 class UserProfile(models.Model):
 	user = models.OneToOneField(User, on_delete=models.CASCADE)
 	name = models.CharField(max_length=128, unique=True)
+
 	current_workout = models.ForeignKey(Workout, null=True, on_delete=models.CASCADE)
 	#change from default to autonowadd=true
 	last_workout_completed = models.DateTimeField(default = datetime.now().replace(year=2000))
@@ -52,6 +67,7 @@ class UserProfile(models.Model):
 
 	def __str__(self):
 		return self.user.username
+
 
 class CircuitComplete(models.Model):
 	user = models.ForeignKey(User, on_delete=models.CASCADE)

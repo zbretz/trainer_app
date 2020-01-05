@@ -1,12 +1,31 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from trainer_app.models import Workout, UserProfile, Unit, Rep_Scheme, CircuitComplete
+from trainer_app.models import Workout, UserProfile, Unit, Rep_Scheme, CircuitComplete, WorkoutLog
 from django.urls import reverse
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from datetime import datetime, timezone, timedelta
 from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth.models import User
+
+from django.contrib.auth.models import User
+
+def single_page_app(request):
+
+	#below to test other users
+	#k = User.objects.last()
+	#request.user = k
+
+	user_profile = UserProfile.objects.get(user=request.user)
+
+	log = WorkoutLog.objects.filter(user=request.user).values('workout').distinct()
+	workouts_completed = completed = [each['workout'] for each in log]
+	program_length = Workout.objects.filter(group=request.user.userprofile.group).count()
+	context_dict={'workouts_completed':workouts_completed, 'program_length':range(1, program_length+1)}
+
+	return render(request,'trainer_app/fullpage/examples/simple.html', context=context_dict)
+	#return render(request,'trainer_app/fullpage.js-master/extensions/c2.html')
+
 
 def checker(request):
 	time_now = datetime.now().replace(tzinfo=timezone.utc)
@@ -57,6 +76,32 @@ def current_workout(request):
 		return redirect(reverse('trainer_app:home'))
 		#return render(request, 'trainer_app/home.html', context=context_dict)
 
+
+#refer to comment about function 'last_workout'
+def view_workout(request):
+	workout_number = request.GET.get('workout_number')
+	user_profile = request.user.userprofile
+
+	workout = Workout.objects.get(group = user_profile.group, workout_number=workout_number)
+
+	units = workout.units.all()
+
+	for unit in units:
+		length = len(unit.exercises.all())
+		if length == 1:
+			unit.type = 'solo'
+		elif length == 2:
+			unit.type = 'superset'
+		else:
+			unit.type = 'circuit'
+
+		unit.all_exercises = Rep_Scheme.objects.filter(unit=unit)
+	
+	context_dict = {'units': units, 'workout': workout, 'completed':True}
+
+	return render(request, 'trainer_app/index3.html', context=context_dict)
+
+#last_workout is going to be redundant with ability to view all workouts
 @login_required
 def last_workout(request):
 
