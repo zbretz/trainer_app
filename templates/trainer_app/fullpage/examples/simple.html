@@ -89,7 +89,15 @@
 
 
   <div class="section" id="section1">
-      <div class="slide "><h1>Simple Demo</h1></div>
+
+      <div class="slide ">
+        <div class="section">
+            <video class="myVideo" loop muted data-autoplay>
+                 <source src="{{ MEDIA_URL }}face pulls.mp4" type="video/mp4">
+                 <source src="{{ MEDIA_URL }}{{e.exercise.image}}" type="video/mp4">
+            </video>
+        </div>
+      </div>
       
         <div class="slide fp-slide">
           <div class="section">
@@ -100,8 +108,24 @@
         </div>
       </div>
       
-      <div class="slide active"><h1>Only text</h1></div>
-      <div class="slide"><h1>And text</h1></div>
+      <div class="slide active">
+        <div class="section">
+                <video class="myVideo" loop muted data-autoplay>
+                 <source src="{{ MEDIA_URL }}face pulls.mp4" type="video/mp4">
+                 <source src="{{ MEDIA_URL }}{{e.exercise.image}}" type="video/mp4">
+                </video>
+        </div>
+      </div>
+      
+      <div class="slide">
+        <div class="section">
+                <video class="myVideo" loop muted data-autoplay>
+                 <source src="{{ MEDIA_URL }}face pulls.mp4" type="video/mp4">
+                 <source src="{{ MEDIA_URL }}{{e.exercise.image}}" type="video/mp4">
+                </video>
+        </div>
+      </div>
+      
       <div class="slide"><h1>And more text</h1></div>
   </div>
   <div class="section" id="section2"><h1>No wraps, no extra markup</h1></div>

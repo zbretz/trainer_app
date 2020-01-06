@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Zach's Workout App</title>
+
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    
+    <link href="https://fonts.googleapis.com/css?family=Barlow&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Chivo:300,400,700,900|Open+Sans:400,700" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css?family=Dosis:800|Luckiest+Guy|Permanent+Marker&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans+SC:900i&display=swap" rel="stylesheet">
+
+
+
+
+<style type="">
+  
+#complete-button{
+  font-family: "Chivo", sans-serif;
+}
+
+a {
+  text-decoration: none
+}
+
+h3, p {
+  font-family: 'Barlow', serif;
+}
+
+
+
+.fixed {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  border: 0px solid #c20034;
+  border-top: 15px solid rgb(243,243,243);
+  display:none;
+}
+
+video {
+display: block;
+width:100%;
+margin-top: 0px;
+margin-left: auto;
+margin-right: auto;
+}
+
+#logo {padding:0px;
+  font-size: 36px;font-weight:'900i';font-family: 'Alegreya Sans SC', sans-serif;
+
+  display: block;margin-left: auto;margin-right: auto
+
+
+  font-size:80px;
+  background: #000000;
+background: -moz-linear-gradient(-45deg, #000000 0%, #FFFFFF 100%);
+background: -webkit-linear-gradient(-45deg, #000000 0%, #FFFFFF 100%);
+background: linear-gradient(135deg, #000000 0%, #FFFFFF 100%);
+
+    -webkit-background-clip: text;
+  -webkit-text-fill-color: 
+  transparent;
+  font: {
+    size: 20vw;
+    family: $font;
+}
+
+#complete{
+background: #FF6C0A;
+background: -moz-linear-gradient(45deg, #FF6C0A 0%, #FF19D1 100%);
+background: -webkit-linear-gradient(45deg, #FF6C0A 0%, #FF19D1 100%);
+background: linear-gradient(45deg, #FF6C0A 0%, #FF19D1 100%);
+
+}
+
+</style>
+
+
+
+
+  </head>
+
+  <body >
+
+
+    <div  style="max-width:475px;width:100%;position:fixed; top:0;background-color: rgb(192,192,192,.9);" class=' w3-row' ><p id='logo' class='w3-center' style='margin: 10px;color:white'><strong>CHAMBEA</p></strong></div>
+
+
+<div class="w3-border" style="max-width:475px; background-color:rgb(243,243,243)" >
+
+</br>
+</br>
+</br>
+</br>
+
+    <div class='w3-row'>
+
+          <img src="{% static 'images/body.png' %}" style="display: block;margin-left: auto;margin-right: auto; width: 50%">
+          
+    </div>
+
+  <div class="w3-row">
+      <div class="w3-col s6 w3-center"><p >about</p></div>
+     <div class="w3-col s6 w3-center"><p>workouts</p></div>
+    </div>
+
+       <div class='w3-margin w3-border-top'>
+      </div>
+
+<div class="w3-row">
+  
+  <h3 class="w3-center" style="margin:0px"><strong>Phase1</strong></h3>
+
+  <div class="w3-col w3-container s4 l3 ">
+    <div>
+    
+    <p style="margin:0px"><strong>149.99</p>
+    </strong>
+    </div>
+    <div>
+   <img style="margin-left:-4px; width: 130%"src="{% static 'images/bb-image.png' %}">
+    </div>
+  </div>
+  <div class="w3-col w3-container s8 l9">  
+    <p>This part will occupy 12 columns on a small screen, 8 on a medium screen, and 9 on a large screen.</p>
+    <p>This part will occupy 12 columns on a small screen, 8 on a medium screen, and 9 on a large screen.</p>
+  </div>
+
+</div>
+
+
+</br>
+{% for each in units %}
+<div class="w3-container">
+    <div class="w3-card-4 w3-white" style="width:100%">
+    <header class="w3-container w3-light-grey">
+      <h3>{{each.type}} x {{each.times_to_repeat}} reps</h3>
+    </header>
+    <div class="w3-container">
+       {% for e in each.all_exercises %}
+      <p data-exerciseid="{{ exercise.id }}" class='flip'>{{e.exercise}} x {{e.reps}}</p>
+      <hr>
+
+<div id="{{ exercise.id }}" style="color: gray;background-color:#2a2a2a" class="fixed">
+<video autoplay loop muted controls>
+<source src="{{ MEDIA_URL }}{{e.exercise.image}}" type="video/mp4">
+Your browser does not support HTML5 video.
+</video>
+<p class='w3-container'style="background-color:#2a2a2a">An element with position: fixed; is positioned relative to the viewport, which means it always stays in the same place even if the page is scrolled:</p>
+</div>
+
+      {% endfor %}
+    </div>
+  </div>
+</div>
+</br>
+{% endfor %}
+
+
+
+<!---last div should go here-->
+
+
+
+<!--------------------------------MENU/COMPLETE BUTTON------------------------------------>
+
+
+<div id='complete' class='w3-margin w3-round w3-padding w3-center' style='margin: auto;font-family: "Chivo", sans-serif;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 14px;
+    text-transform: uppercase;
+    color: #fff;
+    background-color: #f00;
+    padding: 15px;'>
+  <p id='complete-button' class="" style= ""><a id='next_button' href="{% url 'trainer_app:workout_complete' %}">Log Workout!</a></p>
+  <!-- <p class='w3-small'> click if complete </p> -->
+</div>
+
+
+
+
+
+<!--last div (temp) -->
+</div>
+
+
+<div id="next" class="status w3-panel w3-red w3-center" style="display:none">
+  <p><a id='next_button' class="disabled" href="{% url 'trainer_app:workout_complete' %}">Next Workout.</a></p>
+  <p class='w3-small'> click when ready  </p>
+</div>
+
+
+<script src="{% static 'js/jquery-3.3.1.min.js' %}" crossorigin="anonymous"></script>
+<script src="{% static 'js/trainer-jquery.js' %}" crossorigin="anonymous"></script>
+<script src="{% static 'js/trainer-ajax.js' %}" crossorigin="anonymous"></script>
+
+
+<!---put this into jquery file 
+
+<script>
+  $(document).ready(function(){
+  var video_active = false;
+
+  $(".flip").click(function(video_active){
+    $(".fixed").slideDown("slow");
+    video_active = true;
+
+   $(window).scroll(function() {
+    if (video_active == true){
+      $(".fixed").slideUp("slow")
+      }
+    });
+  })
+
+  var backgroundwidth = $("#background").width();  
+  $(".fixed").width(backgroundwidth);        
+ });
+</script>
+
+end jquery file -->
+
+
+<!---put this into jquery file --->
+<script>
+  $(document).ready(function(){
+  var video_active = false;
+
+  $(".flip").click(function(video_active){
+
+
+    var panel = this.nextElementSibling.nextElementSibling
+
+    $(panel).slideDown("slow");
+    video_active = true;
+
+   $(window).scroll(function() {
+    if (video_active == true){
+      $(panel).slideUp("slow")
+      }
+    });
+  })
+
+  var backgroundwidth = $("#background").width();  
+  $(".fixed").width(backgroundwidth);        
+ });
+</script>
+<!-- end jquery file -->
+
+
+
+
+	</div>
+  </body>
+</html>

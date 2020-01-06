@@ -99,7 +99,7 @@ def view_workout(request):
 	
 	context_dict = {'units': units, 'workout': workout, 'completed':True}
 
-	return render(request, 'trainer_app/index3.html', context=context_dict)
+	return render(request, 'trainer_app/restyle.html', context=context_dict)
 
 #last_workout is going to be redundant with ability to view all workouts
 @login_required
@@ -148,7 +148,7 @@ def workout_complete(request):
 			print('*********' + str(e))
 	user_profile.save()
 
-	return redirect(reverse('trainer_app:home'))
+	return redirect(reverse('trainer_app:single_page_app'))
 
 @login_required
 def home(request):
