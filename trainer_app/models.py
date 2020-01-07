@@ -4,6 +4,11 @@ from datetime import datetime
 
 # Create your models here.
 
+class Trainer(models.Model):
+    trainer = models.OneToOneField(User, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.trainer.username
 
 def exercise_image_path(instance, filename):
 	return 'exercise_demos/{0}'.format(filename)
@@ -34,8 +39,11 @@ class Rep_Scheme(models.Model):
 	exercise = models.ForeignKey(Exercise, on_delete=models.CASCADE)
 	reps = models.CharField(max_length = 32, null=True)
 
+default_description = "This part will occupy 12 columns on a small screen, 8 on a medium screen, and 9 on a large screen. This part will occupy 12 columns on a small screen, 8 on a medium screen, and 9 on a large screen."
 class Group(models.Model):
 	group_name = models.CharField(max_length=128, default='sample')
+	description = models.CharField(max_length=256, null=True, default=default_description)
+	trainer = models.ForeignKey(Trainer, null=True, on_delete = models.SET_NULL)#, default= 1)
 	
 	def __str__(self):
 		return self.group_name
@@ -64,6 +72,7 @@ class UserProfile(models.Model):
 	#change from default to autonowadd=true
 	last_workout_completed = models.DateTimeField(default = datetime.now().replace(year=2000))
 	group = models.ForeignKey(Group, null=True, on_delete=models.CASCADE)
+	trainer = models.ForeignKey(Trainer, null=True, on_delete = models.SET_NULL)#, default= 1)
 
 	def __str__(self):
 		return self.user.username

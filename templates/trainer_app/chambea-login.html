@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>fullPage.js A simple Demo</title>
+  <meta name="author" content="Alvaro Trigo Lopez" />
+  <meta name="description" content="fullPage very simple demo." />
+  <meta name="keywords"  content="fullpage,jquery,demo,simple" />
+  <meta name="Resource-type" content="Document" />
+
+  <link rel="stylesheet" type="text/css" href="https://csshake.surge.sh/csshake.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans+SC:900i&amp;display=swap" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+
+  <style>
+
+.vertical-center {
+  margin: 0;
+  position: absolute;
+  top: 30%;
+
+}
+
+
+#logo {
+  margin: auto;
+  width: 100%;
+
+
+  font-size: 186px;font-weight:'900i';font-family: 'Alegreya Sans SC', sans-serif;
+
+  display: block;margin-left: auto;margin-right: auto
+
+background: #FF6C0A;
+background: -moz-linear-gradient(45deg, #FF6C0A 0%, #FF19D1 100%);
+background: -webkit-linear-gradient(45deg, #FF6C0A 0%, #FF19D1 100%);
+background: linear-gradient(45deg, #FF6C0A 0%, #FF19D1 100%);
+
+    -webkit-background-clip: text;
+  -webkit-text-fill-color: 
+  transparent;
+  
+}
+
+body{
+  background-color: black;
+}
+
+
+
+
+.zshake {
+  /* Start the shake animation and make the animation last for 0.5 seconds */
+  animation: shake 0.5s;
+
+  /* When the animation is finished, start again */
+  animation-iteration-count: infinite;
+}
+
+@keyframes shake {
+  0% { transform: translate(1px, 1px) rotate(0deg); }
+  10% { transform: translate(-1px, -2px) rotate(-1deg); }
+  20% { transform: translate(-3px, 0px) rotate(1deg); }
+  30% { transform: translate(3px, 2px) rotate(0deg); }
+  40% { transform: translate(1px, -1px) rotate(1deg); }
+  50% { transform: translate(-1px, 2px) rotate(-1deg); }
+  60% { transform: translate(-3px, 1px) rotate(0deg); }
+  70% { transform: translate(3px, 1px) rotate(-1deg); }
+  80% { transform: translate(-1px, -1px) rotate(1deg); }
+  90% { transform: translate(1px, 2px) rotate(0deg); }
+  100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+
+
+
+</style>
+</head>
+
+
+
+<body style='background-color: black;height:1900px'>
+
+<!--audio player -->
+<p style="color:white">Click the buttons to play or pause the audio.</p>
+
+<button style="color:white" onclick="playAudio()" type="button">Play Audio</button>
+<button style="color:white" onclick="pauseAudio()" type="button">Pause Audio</button> 
+<!--audio player -->
+<!--  <p class="shake shake-constant" style='color:white;font-size: 66px'>sdsdsd</p>
+-->
+
+
+
+
+<div class='w3-container w3-round-xlarge w3-card vertical-center' style='width:100%;padding:auto;margin:auto;background-color: rgb(255,255,255,0)'>
+
+    <div style='position: relative'>
+  <p style='' id='logo' class='shake-slow shake-constant w3-center '>Chambea</p>
+  </div>
+
+  <div style='width:80%;margin:auto;'>
+
+  <input placeholder='username' class='w3-round-xlarge' style='font-size:30px;margin-bottom: 100px;width:100%;height: 100px;background-color:white;margin:auto;margin-bottom: 30px'
+  >
+
+  <input class='w3-round-xlarge' style='width:100%;height: 100px;background-color:white;margin:auto'
+  >
+
+  <button onclick="playAudio()" class='w3-round-xlarge' style='width:100%;height: 100px;background-color:pink;margin:auto'> submit </button>button
+
+
+
+</div>
+
+<audio id="myAudio">
+  <source src="chambea.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+
+</div>
+
+
+</body>
+
+<script type="text/javascript">
+
+
+//audio player
+var x = document.getElementById("myAudio"); 
+
+
+$(window).scroll(function(){
+  x.play()
+})
+
+function playAudio() { 
+  x.play(); 
+} 
+function pauseAudio() { 
+  x.pause(); 
+} 
+//audio player
+
+  
+$( document ).ready(function() {
+  //setTimeout(myFunction, 1000)
+  setTimeout(myFunction, 2500)
+
+
+  function myFunction() {
+$( "#logo" ).removeClass( "shake-slow shake-constant" )
+//alert('!')
+
+  }
+
+    console.log( "not ready!" );
+});
+
+</script>
+
+</html>

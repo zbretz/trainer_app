@@ -10,6 +10,11 @@ from django.contrib.auth.models import User
 
 from django.contrib.auth.models import User
 
+def hello_trainers(request):
+	context_dict={}
+	return render(request,'trainer_app/fullpage/examples/simple-withtestvideo-hello.html', context=context_dict)
+	
+
 def single_page_app(request):
 
 	#below to test other users
@@ -23,7 +28,7 @@ def single_page_app(request):
 	program_length = Workout.objects.filter(group=request.user.userprofile.group).count()
 	context_dict={'workouts_completed':workouts_completed, 'program_length':range(1, program_length+1)}
 
-	return render(request,'trainer_app/fullpage/examples/simple.html', context=context_dict)
+	return render(request,'trainer_app/fullpage/examples/simple-withtestvideo.html', context=context_dict)
 	#return render(request,'trainer_app/fullpage.js-master/extensions/c2.html')
 
 

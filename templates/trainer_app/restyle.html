@@ -16,6 +16,7 @@
 
     <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans+SC:900i&display=swap" rel="stylesheet">
 
+<script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@12.4.0/dist/lazyload.min.js"></script>
 
 
 
@@ -102,39 +103,23 @@ background: linear-gradient(45deg, #FF6C0A 0%, #FF19D1 100%);
 </br>
 </br>
 
-    <div class='w3-row'>
 
-          <img src="{% static 'images/body.png' %}" style="display: block;margin-left: auto;margin-right: auto; width: 50%">
-          
-    </div>
 
-  <div class="w3-row">
-      <div class="w3-col s6 w3-center"><p >about</p></div>
-     <div class="w3-col s6 w3-center"><p>workouts</p></div>
-    </div>
 
-       <div class='w3-margin w3-border-top'>
-      </div>
 
 <div class="w3-row">
+  <div style="width:80%;margin:auto">
   
-  <h3 class="w3-center" style="margin:0px"><strong>Phase1</strong></h3>
+       <h3 class="w3-center" style=""><strong>Phase1</strong></h3>
 
-  <div class="w3-col w3-container s4 l3 ">
-    <div>
-    
-    <p style="margin:0px"><strong>149.99</p>
-    </strong>
-    </div>
-    <div>
-   <img style="margin-left:-4px; width: 130%"src="{% static 'images/bb-image.png' %}">
-    </div>
-  </div>
-  <div class="w3-col w3-container s8 l9">  
-    <p>This part will occupy 12 columns on a small screen, 8 on a medium screen, and 9 on a large screen.</p>
-    <p>This part will occupy 12 columns on a small screen, 8 on a medium screen, and 9 on a large screen.</p>
-  </div>
+  
 
+       <div class="">  
+          <p>This part will occupy 12 columns on a small screen, 8 on a medium screen, and 9 on a large screen.</p>
+          <p>This part will occupy 12 columns on a small screen, 8 on a medium screen, and 9 on a large screen.</p>
+      </div>
+
+  </div>
 </div>
 
 
@@ -151,8 +136,8 @@ background: linear-gradient(45deg, #FF6C0A 0%, #FF19D1 100%);
       <hr>
 
 <div id="{{ exercise.id }}" style="color: gray;background-color:#2a2a2a" class="fixed">
-<video autoplay loop muted controls>
-<source src="{{ MEDIA_URL }}{{e.exercise.image}}" type="video/mp4">
+<video class="lazy" autoplay loop muted controls >
+<source data-src="{{ MEDIA_URL }}{{e.exercise.image}}" type="video/mp4">
 Your browser does not support HTML5 video.
 </video>
 <p class='w3-container'style="background-color:#2a2a2a">An element with position: fixed; is positioned relative to the viewport, which means it always stays in the same place even if the page is scrolled:</p>
@@ -258,7 +243,14 @@ end jquery file -->
 
 
 
-
 	</div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@12.4.0/dist/lazyload.min.js"></script>
+  <script>var lazyLoadInstance = new LazyLoad({
+    elements_selector: ".lazy"
+    // ... more custom settings?
+});
+</script>
+
   </body>
 </html>

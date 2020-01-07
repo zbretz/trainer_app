@@ -16,4 +16,6 @@ urlpatterns = [
     path('circuit_complete', views.circuit_complete_tracker, name = 'circuit_complete'),
     path('spa', views.single_page_app, name='single_page_app'),
     path('workout', views.view_workout, name='view_workout'),
+    path('hello', views.hello_trainers, name='hello_trainers'),
+
 ]
