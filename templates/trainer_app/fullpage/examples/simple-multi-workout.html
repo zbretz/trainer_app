@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>fullPage.js A simple Demo</title>
+	<meta name="author" content="Alvaro Trigo Lopez" />
+	<meta name="description" content="fullPage very simple demo." />
+	<meta name="keywords"  content="fullpage,jquery,demo,simple" />
+	<meta name="Resource-type" content="Document" />
+
+  <link rel="stylesheet" type="text/css" href="{% static 'fullpage/fullpage.css'%}" />
+  <link rel="stylesheet" type="text/css" href="{% static 'fullpage/examples.css'%}" />
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+  $(document).ready(function(){
+  var video_active = false;
+
+  $(".flip").click(function(video_active){
+    $(".fixed").slideDown("slow");
+    video_active = true;
+
+   $(window).scroll(function() {
+    if (video_active == true){
+      $(".fixed").slideUp("slow")
+      }
+    });
+  })
+
+  var backgroundwidth = $("#background").width();  
+  $(".fixed").width(backgroundwidth);        
+ });
+</script>
+
+
+
+  <style>
+
+h3, p {
+  font-family: 'Barlow', serif;
+}
+
+.fixed {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 90%;
+  border: 3px solid #73AD21;
+  left: 50%;
+  transform: translateX(-50%);
+  display:none;
+}
+
+video {
+display: block;
+width:100%;
+margin-top: 50px;
+margin-left: auto;
+margin-right: auto;
+}
+
+</style>
+</head>
+<body>
+
+
+
+
+<div id="fullpage">
+
+	<div class="section active" id="section0" data-anchor="firstPage" >
+   
+  <!---->    <div class="slide">     
+<h1> workout1</h1>
+
+<div class="w3-container">
+    <div class="w3-card-4 w3-white" style="width:100%;">
+    <header class="w3-container w3-light-grey">
+      <h3 class='flip'>Circuit</h3>
+    </header>
+    <div class="w3-container">
+      <p>workout 1</p>
+      <hr>
+      <p>workout 2</p>
+    </div>
+  </div>
+</div>
+
+</br>
+
+<div class="w3-container">
+    <div class="w3-card-4 w3-white" style="width:100%;">
+    <header class="w3-container w3-light-grey">
+      <h3 class='flip'>Circuit</h3>
+    </header>
+    <div class="w3-container">
+      <p>workout 1</p>
+      <hr>
+      <p>workout 2</p>
+            <p>workout 1</p>
+      <hr>
+      <p>workout 2</p>
+    </div>
+  </div>
+</div>
+
+</br>
+
+<div class="w3-container">
+    <div class="w3-card-4 w3-white" style="width:100%">
+    <header class="w3-container w3-light-grey">
+      <h3 class='flip'>Superset</h3>
+    </header>
+    <div class="w3-container">
+      <p>hello bato</p>
+      <hr>
+      <p>hello rach also</p>
+            <p>workout 1</p>
+      <hr>
+      <p>workout 2</p>
+    </div>
+  </div>
+</div>
+
+
+
+<div style="background-color:green" id='panel' class="flip fixed w3-round-large">
+<video  controls>
+  <source src="mov_bbb.mp4" type="video/mp4">
+  <source src="mov_bbb.ogg" type="video/ogg">
+  Your browser does not support HTML5 video.
+</video>
+<p style="background-color:green">An element with position: fixed; is positioned relative to the viewport, which means it always stays in the same place even if the page is scrolled:</p>
+This div element has position: fixed;
+</div>
+ 
+
+
+
+
+
+
+
+
+
+      <!----></div>
+
+            <div class="slide">     
+
+      </div>
+
+  </div>
+	
+
+
+  <div class="section" id="section1" data-anchor="secondPage">
+
+
+	    <div class="slide">     
+
+
+
+      </div>
+
+
+      <div class="slide ">
+
+      </div>
+
+
+      <div class="slide ">
+
+      </div>
+
+	    <div class="slide"><h1>And more text</h1></div>
+	</div>
+	<div class="section" id="section2">
+
+    <h1>No wraps, no extra markup</h1>
+
+<div class='w3-round-xlarge' style='height:300px;background-color:black;width:900px;margin:auto'></div>
+
+<video  controls>
+  <source src="face pulls2.mp4" type="video/mp4">
+  <source src="mov_bbb.ogg" type="video/ogg">
+  Your browser does not support HTML5 video.
+</video>
+
+  </div>
+	<div class="section" id="section3"><h1>Just the simplest demo ever</h1></div>
+</div>
+
+<script type="text/javascript" src="{% static 'fullpage/scrolloverflow.min.js'%}"></script>
+
+
+<script type="text/javascript" src="{% static 'fullpage/fullpage.extensions.min.js'%}"></script>
+<script type="text/javascript">
+	var myFullpage = new fullpage('#fullpage', {
+    licenseKey: '93EEA4A0-4FD14E17-83BCED90-BB1521A4',
+		sectionsColor: ['#f2f2f2', '#4BBFC3', '#7BAABE', 'whitesmoke', '#ccddff'],
+    anchors: ['firstPage', 'secondPage', '3rdPage', '4thpage'],
+    menu: '#menu',
+    slidesNavigation: true,
+    scrollOverflow: true,
+    scrollHorizontally: true,
+    scrollHorizontallyKey: 'YWx2YXJvdHJpZ28uY29tX01mU2MyTnliMnhzU0c5eWFYcHZiblJoYkd4NVNRcg==',
+	});
+</script>
+</body>
+</html>

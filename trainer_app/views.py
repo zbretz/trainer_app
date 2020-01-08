@@ -10,6 +10,10 @@ from django.contrib.auth.models import User
 
 from django.contrib.auth.models import User
 
+def simple_multi(request):
+		return render(request,'trainer_app/fullpage/examples/simple-multi-workout.html')
+
+
 def hello_trainers(request):
 	context_dict={}
 	return render(request,'trainer_app/fullpage/examples/simple-withtestvideo-hello.html', context=context_dict)
