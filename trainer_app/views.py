@@ -146,16 +146,26 @@ def last_workout(request):
 
 @login_required
 def workout_complete(request):
-	user_profile = request.user.userprofile
-	user_profile.last_workout_completed = datetime.now()
+
+	#user_profile = request.user.userprofile
+	#user_profile.last_workout_completed = datetime.now()
 	
-	workout_number = user_profile.current_workout.workout_number
-	try:
-		user_profile.current_workout = Workout.objects.get(group = user_profile.group, workout_number=workout_number + 1)
-		print('EXCEPTION: ' + str(user_profile.current_workout.workout_number))
-	except Exception as e:
-			print('*********' + str(e))
-	user_profile.save()
+	#workout_number = user_profile.current_workout.workout_number
+	#try:
+	#	user_profile.current_workout = Workout.objects.get(group = user_profile.group, workout_number=workout_number + 1)
+	#	print('EXCEPTION: ' + str(user_profile.current_workout.workout_number))
+	#except Exception as e:
+	#		print('*********' + str(e))
+	#user_profile.save()
+
+	workout_id = request.GET.get('workout_id')
+	print(workout_id)
+	type(workout_id)
+	workout = Workout.objects.get(id=workout_id)
+	zw = WorkoutLog(user=request.user, group=request.user.userprofile.group,
+		workout = workout, date_performed = datetime.now())
+	zw.save()
+
 
 	return redirect(reverse('trainer_app:single_page_app'))
 

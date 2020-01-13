@@ -34,11 +34,21 @@
     background-position: center center;
     background-size: contain;
     object-fit: cover; /*cover video background */
-    z-index:3;
+    z-index:-1;
 }
 
 #menu{
   font-size: 40px;
+}
+
+
+/*For the timestamp overlay*/
+.content {
+  background: rgba(0, 0, 0, 0.0);
+  color: #f1f1f1;
+  margin: 90px;
+  padding: 20px;
+  font-size:40px;
 }
 
 </style>
@@ -64,7 +74,7 @@
     </br>
     </br>
 
-    <table style="margin: auto; width:60%" class="w3-table-all w3-xxlarge">
+    <table style="margin: auto; width:60%" class="w3-table-all w3-jumbo">
      <tr>
        <th>Workout Number</th>
        <th class="w3-right-align">Complete?</th>
@@ -88,10 +98,28 @@
 
   <div class="section" id="section1" data-anchor="secondPage">
 
-
 	    <div class="slide">     
-        <video autoplay muted loop data-keepplaying id="myVideo">
-          <source src="{{ MEDIA_URL }}face pulls.mp4" type="video/mp4">
+<!--
+        <div class="content">
+          <h1>Wallsit</h1>
+          <p class='timeseek' data-time='59'>Pushups</p>
+          <p class='timeseek' data-time='14'>Wallsits</p>
+          <p class='timeseek' data-time='59'>Pushups</p>
+          <p class='timeseek'>Situps</p>
+          <a id="gettime" href="#">get time</a>
+        </div>
+-->
+
+        <video autoplay muted controls loop data-keepplaying id="myVideo">
+          <source data-src="{{ MEDIA_URL }}face pulls6.mp4" type="video/mp4">
+          Your browser does not support HTML5 video.
+        </video>
+      </div>
+
+
+      <div class="slide ">
+        <video autoplay controls loop data-keepplaying id="myVideo">
+          <source data-src="{{ MEDIA_URL }}face pulls6.mp4" type="video/mp4">
           Your browser does not support HTML5 video.
         </video>
       </div>
@@ -99,15 +127,7 @@
 
       <div class="slide ">
         <video autoplay muted loop data-keepplaying id="myVideo">
-          <source src="{{ MEDIA_URL }}face pulls.mp4" type="video/mp4">
-          Your browser does not support HTML5 video.
-        </video>
-      </div>
-
-
-      <div class="slide ">
-        <video autoplay muted loop data-keepplaying id="myVideo">
-          <source src="{{ MEDIA_URL }}face pulls.mp4" type="video/mp4">
+          <source data-src="{{ MEDIA_URL }}face pulls.mp4" type="video/mp4">
           Your browser does not support HTML5 video.
         </video>
       </div>
@@ -130,7 +150,45 @@
     slidesNavigation: true,
     scrollHorizontally: true,
     scrollHorizontallyKey: 'YWx2YXJvdHJpZ28uY29tX01mU2MyTnliMnhzU0c5eWFYcHZiblJoYkd4NVNRcg==',
+    /*
+      afterSlideLoad: function( section, origin, destination, direction){
+        var loadedSlide = this;
+        if(section.anchor == 'secondPage'){
+          alert("First slide loaded");
+          var x = document.getElementById("myVideo"); 
+          x.play(); 
+        }
+      }
+    */
+
 	});
 </script>
+
+
+<script type="text/javascript">
+/* This is for the exercise timestamp overlay*/
+  $(document).ready(function(){
+    var player = $('#vid').get(0);
+
+    var seek = document.getElementsByClassName("timeseek");
+    var y;
+  
+    for (y = 0; y < seek.length; y++) {
+      seek[y].addEventListener("click", function() {
+        var time = $(this).attr('data-time')
+        player.currentTime=$(this).attr('data-time')
+      });
+    }
+
+    $('#gettime').click(function(){
+            if(player){
+                current_time=player.currentTime;
+                player.currentTime=14;
+            }
+        });
+}
+);
+</script>
+
 </body>
 </html>
