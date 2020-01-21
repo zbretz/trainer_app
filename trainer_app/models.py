@@ -10,6 +10,21 @@ class Trainer(models.Model):
     def __str__(self):
         return self.trainer.username
 
+class Celebrity_Video(models.Model):
+	trainer = models.CharField(max_length=128, null=True)
+	#trainer = models.ForeignKey(Trainer, null=True, on_delete = models.SET_NULL)
+	vid_name = models.CharField(max_length=128, unique=True)
+	image = models.ImageField(null = True, upload_to='exercise_demos/instagram/')
+	thumbnail = models.ImageField(null = True, upload_to='exercise_demos/instagram/posters/')
+
+	def save(self, *args, **kwargs):
+		self.thumbnail = 'exercise_demos/instagram/posters/{0}poster.png'.format(self.vid_name)
+		self.image = 'exercise_demos/instagram/{0}.mp4'.format(self.vid_name)
+		super(Celebrity_Video, self).save(*args, **kwargs)
+
+	def __str__(self):
+		return self.vid_name
+
 def exercise_image_path(instance, filename):
 	return 'exercise_demos/{0}'.format(filename)
 

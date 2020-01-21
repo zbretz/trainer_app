@@ -1,0 +1,122 @@
+<!DOCTYPE html> 
+{% load staticfiles %}
+<html> 
+
+<head>
+
+	<link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.css">
+	<style>
+  #tiny {
+  margin: auto;
+width: 1000px;
+    height:1333px;
+
+  position: absolute;
+
+	}
+
+.swiper-container {
+  border:10px black solid;
+    width: 1000px;
+    height:1333px;
+
+}
+
+	
+</style>
+</head>
+<body> 
+
+<!--
+<div class='center'>
+<video id='tiny' preload="auto" playsinline muted autoplay controls='true'>
+  <source src="{{ MEDIA_URL }}43.mp4" type="video/mp4">
+  Your browser does not support HTML5 video.
+</video>
+</div> 
+-->
+<div style='height:100px;width:1020px;background-color: gray'>
+  </div>
+
+
+<div class="swiper-container">
+    <!-- Additional required wrapper -->
+    <div class="swiper-wrapper">
+        <!-- Slides -->
+        <div class="swiper-slide">
+          
+<div class='center'>
+<video id='tiny' preload="auto" playsinline muted controls='true'>
+  <source src="{{ MEDIA_URL }}43.mp4" type="video/mp4">
+  Your browser does not support HTML5 video.
+</video>
+</div> 
+
+        </div>
+
+    <div class="swiper-slide">
+          
+<div class='center'>
+<video id='tiny' preload="metadata" playsinline muted controls='true'>
+  <source src="{{ MEDIA_URL }}43.mp4" type="video/mp4">
+  Your browser does not support HTML5 video.
+</video>
+</div> 
+
+    </div>
+
+            <div class="swiper-slide">
+          
+<div class='center'>
+<video id='tiny' preload="metadata" playsinline muted controls='true'>
+  <source src="{{ MEDIA_URL }}43.mp4" type="video/mp4">
+  Your browser does not support HTML5 video.
+</video>
+</div> 
+
+          </div>
+
+
+
+    </div>
+    <!-- If we need pagination -->
+    <div class="swiper-pagination"></div>
+
+    <!-- If we need navigation buttons -->
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+
+    <!-- If we need scrollbar -->
+    <div class="swiper-scrollbar"></div>
+</div>
+
+<div style='margin-top:10px;height:100px;width:1020px;background-color: green'>
+  </div>
+
+
+<script src="https://unpkg.com/swiper/js/swiper.min.js"></script>
+  <script>
+  var mySwiper = new Swiper ('.swiper-container', {
+    // Optional parameters
+    direction: 'vertical',
+    loop: true,
+
+    // If we need pagination
+    pagination: {
+      el: '.swiper-pagination',
+    },
+
+    // Navigation arrows
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+
+    // And if we need scrollbar
+    scrollbar: {
+      el: '.swiper-scrollbar',
+    },
+  })
+  </script>
+</body> 
+</html>

@@ -1,0 +1,121 @@
+
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Swiper demo</title>
+  <!-- Link Swiper's CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.css">
+
+
+  <!-- Demo styles -->
+  <style>
+    html, body {
+      position: relative;
+      height: 100%;
+    }
+    body {
+      background: #eee;
+      font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      color:#000;
+      margin: 0;
+      padding: 0;
+    }
+    .swiper-container {
+      width: 100%;
+    }
+    .swiper-slide {
+      text-align: center;
+      font-size: 18px;
+      background: #fff;
+
+      /* Center slide text vertically */
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      -webkit-justify-content: center;
+      justify-content: center;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      -webkit-align-items: center;
+      align-items: center;
+    }
+
+  .tiny {
+  margin: auto;
+width: 100%;
+
+
+  }
+
+  </style>
+</head>
+<body>
+
+  <div style="height: 190px;background-color:white;border-bottom: 3px solid lightgray">
+  <p style='margin:auto;width: 50%;'>logo</p>
+  </div>
+    <div style="height: 90px;background-color:rgb(237, 237, 237);border-bottom: 3px solid gray">
+      info
+  </div>
+  <!-- Swiper -->
+  <div class="swiper-container">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">
+
+
+<div class='center'>
+<video style='width:980px' class='tiny' preload="auto" autoplay playsinline muted controls='true'>
+  <source src="{{ MEDIA_URL }}43compress.mp4" type="video/mp4">
+  Your browser does not support HTML5 video.
+</video>
+</div> 
+
+      </div>
+      <div class="swiper-slide">
+
+<div class='center'>
+<video class='tiny' preload="auto" playsinline muted controls='true'>
+  <source src="{{ MEDIA_URL }}43compress.mp4" type="video/mp4">
+  Your browser does not support HTML5 video.
+</video>
+</div> 
+
+
+      </div>
+      <div class="swiper-slide">
+
+<div class='center'>
+<video class='tiny' preload="auto" playsinline muted controls='true'>
+  <source src="{{ MEDIA_URL }}43.mp4" type="video/mp4">
+  Your browser does not support HTML5 video.
+</video>
+</div> 
+
+
+      </div>
+      <div class="swiper-slide">Slide 4</div>
+      <div class="swiper-slide">Slide 5</div>
+      <div class="swiper-slide">Slide 6</div>
+      <div class="swiper-slide">Slide 7</div>
+      <div class="swiper-slide">Slide 8</div>
+      <div class="swiper-slide">Slide 9</div>
+      <div class="swiper-slide">Slide 10</div>
+    </div>
+  </div>
+
+  <!-- Swiper JS -->
+<script src="https://unpkg.com/swiper/js/swiper.min.js"></script>
+
+
+  <!-- Initialize Swiper -->
+  <script>
+    var swiper = new Swiper('.swiper-container');
+  </script>
+</body>
+</html>

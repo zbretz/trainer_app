@@ -18,5 +18,6 @@ urlpatterns = [
     path('workout', views.view_workout, name='view_workout'),
     path('hello', views.hello_trainers, name='hello_trainers'),
     path('simple_multi', views.simple_multi, name='simple_multi'),
-
+    path('play/<exercise_name>', views.play_vid, name='play_vid'),
+    path('profile/<trainer>', views.celebrity_profile, name='celebrity_profile'),
 ]

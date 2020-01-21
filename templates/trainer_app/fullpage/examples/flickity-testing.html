@@ -1,0 +1,202 @@
+<!DOCTYPE html> 
+{% load staticfiles %}
+<html> 
+
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+<style type="text/css">
+
+  
+/* external css: flickity.css */
+
+* { box-sizing: border-box; }
+
+body { font-family: sans-serif; }
+
+/* force scrollbar, not necessary, but may reduce gaps. Setting a max-height on .carousel also works */
+html { overflow-y: scroll; }
+
+.carousel {
+  background: #eee;
+}
+
+.carousel img {
+  display: block;
+  /*
+  height: 720px;
+  width: 540px;
+  */
+  height: 720px;
+  width: 720px;
+}
+
+/* external css: flickity.css */
+
+* { box-sizing: border-box; }
+
+body { font-family: sans-serif; }
+
+.carousel1 {
+  background: #eee;
+}
+
+.carousel-cell1 {
+/*
+  width: 66%;
+  height: 840px;
+*/
+  width: 100%;
+  height: 1000px;
+
+  margin-right: 10px;
+  background: #8C8;
+  border-radius: 5px;
+  counter-increment: carousel-cell;
+
+}
+
+/* cell number */
+.carousel-cell1:before {
+  display: block;
+  text-align: center;
+  
+  line-height: 200px;
+  font-size: 80px;
+  color: white;
+}
+
+.tiny{
+  width:100%;
+}
+
+a{  opacity: .7}
+a.is-selected {
+  opacity: 1;
+}
+
+
+
+</style>
+
+</head>
+
+<body>
+<!--
+<div id='msg' style="height:1000px;background-color: green"></div>
+<div id='body' style='display: none'>
+-->
+<!--
+<div id='msg'style='position:fixed;min-height:100%; min-width:100%; z-index:999; background-color:black'></div>
+-->
+  <div class="w3-center" style="z-index: 99; position:fixed ;height: 190px;background-color:white;border-bottom: 3px solid lightgray; width:100%; ">
+
+    <p style='font-size: 66px;
+
+  display: block;margin-left: auto;margin-right: auto;'>chambea</p>
+      
+
+  </div>
+  <div style="z-index: 98;position:relative; top:190px; height: 90px;background-color:rgb(255,255,240);border-bottom: 3px solid gray">
+      info
+  </div>
+
+<h1>Our Team</h1>
+<!-- Flickity HTML init -->
+<div class="carousel1"
+  data-flickity='{ "wrapAround": true, "autoPlay": 3600  }'>
+  
+  <div class="carousel-cell1">
+    <video class='tiny' preload="auto" autoplay playsinline muted loop controls='true' poster="{{ MEDIA_URL }}poster1.png">
+    <source src="{{ MEDIA_URL }}frenchfitnesscompress.mp4" type="video/mp4">
+    Your browser does not support HTML5 video.
+    </video>
+  </div>
+  <div class="carousel-cell1">
+    <video class='tiny' preload="auto" autoplay playsinline muted loop controls='true'>
+    <source src="{{ MEDIA_URL }}fraserwilson.mp4" type="video/mp4">
+    Your browser does not support HTML5 video.
+  </video>
+  </div>
+  <div class="carousel-cell1">
+    <video class='tiny' preload="auto" autoplay loop playsinline muted controls='true'>
+    <source src="{{ MEDIA_URL }}fraserwilson.mp4" type="video/mp4">
+    Your browser does not support HTML5 video.
+    </video>
+  </div>
+<!--  <div class="carousel-cell1"></div>
+  <div class="carousel-cell1"></div> -->
+</div>
+
+
+
+
+
+<h1>Your Workout</h1>
+<!-- Flickity HTML init -->
+<div class="carousel"
+  data-flickity='{ "imagesLoaded": true }'>
+  <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/orange-tree.jpg" alt="orange tree" />
+  <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/submerged.jpg" alt="submerged" />
+  <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/look-out.jpg" alt="look-out" />
+  <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/one-world-trade.jpg" alt="One World Trade" />
+  <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/drizzle.jpg" alt="drizzle" />
+  <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/cat-nose.jpg" alt="cat nose" />
+</div>
+
+<div style="height:50px"></div>
+
+<h1>Your Workout</h1>
+
+<div class="carousel"
+  data-flickity='{ "imagesLoaded": true, "wrapAround": true }'>
+  <a href="{% url 'trainer_app:simple_multi' %}">
+    <img src="{{ MEDIA_URL }}poster1.png" alt="orange tree" />
+  </a>
+  <a href="{% url 'trainer_app:hello_trainers' %}">
+    <img src="{{ MEDIA_URL }}poster2.png" alt="submerged" />
+  </a>
+  <a href="{% url 'trainer_app:hello_trainers' %}">
+    <img src="{{ MEDIA_URL }}poster3.png" alt="submerged" />
+  </a>
+ <!--
+  <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/one-world-trade.jpg" alt="One World Trade" />
+  <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/drizzle.jpg" alt="drizzle" />
+  <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/cat-nose.jpg" alt="cat nose" />
+-->
+</div>
+
+
+
+
+
+
+<!--
+</div>
+-->
+<script>
+
+  $(document).ready(function() {
+    setTimeout(function(){ $('#body').show();$('#msg').hide(); }, 4000)
+    
+
+});
+</script>
+<script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+<script>
+var elem = document.querySelector('.main-carousel');
+var flkty = new Flickity( elem, {
+  // options
+  cellAlign: 'left',
+  contain: true
+});
+
+
+console.log( flkty.selectedIndex, flkty.selectedElement )
+</script>
+
+
+</body> 
+</html>

@@ -1,0 +1,89 @@
+<!--
+<!DOCTYPE html>
+{% load staticfiles %}
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>fullPage.js A simple Demo</title>
+	<meta name="author" content="Alvaro Trigo Lopez" />
+	<meta name="description" content="fullPage very simple demo." />
+	<meta name="keywords"  content="fullpage,jquery,demo,simple" />
+	<meta name="Resource-type" content="Document" />
+
+  <link rel="stylesheet" type="text/css" href="{% static 'fullpage/fullpage.css'%}" />
+  <link rel="stylesheet" type="text/css" href="{% static 'fullpage/examples.css'%}" />
+</head>
+<body>
+
+
+<div style='height:900px'>
+
+<div style='height:300px'>
+
+<div style='height:300px' id="fullpage">
+	<div class="section active" id="section0"><h1>fullPage.js</h1></div>
+	<div class="section" id="section1">
+	    <div class="slide "><h1>Simple Demo</h1>
+	     	<video style='width:300px' controls>
+          	<source data-src="{{ MEDIA_URL }}face pulls6.webm" type="video/mp4">
+          	Your browser does not support HTML5 video.
+        	</video>
+	    </div>
+	    <div class="slide active"><h1>Only text</h1></div>
+	    <div class="slide"><h1>And text</h1></div>
+	    <div class="slide"><h1>And more text</h1></div>
+	</div>
+	<div class="section" id="section2"><h1>No wraps, no extra markup</h1></div>
+	<div class="section" id="section3"><h1>Just the simplest demo ever</h1></div>
+</div>
+
+<div style='height:300px'></div> 
+
+</div>  
+
+
+
+<script type="text/javascript" src="{% static 'fullpage/fullpage.extensions.min.js'%}"></script>
+<script type="text/javascript">
+	var myFullpage = new fullpage('#fullpage', {
+    licenseKey: '93EEA4A0-4FD14E17-83BCED90-BB1521A4',
+		sectionsColor: ['#f2f2f2', '#4BBFC3', '#7BAABE', 'whitesmoke', '#ccddff'],
+    anchors: ['firstPage', 'secondPage', '3rdPage', '4thpage'],
+    menu: '#menu',
+    slidesNavigation: true,
+    scrollHorizontally: true,
+    scrollHorizontallyKey: 'YWx2YXJvdHJpZ28uY29tX01mU2MyTnliMnhzU0c5eWFYcHZiblJoYkd4NVNRcg==',
+    /*
+      afterSlideLoad: function( section, origin, destination, direction){
+        var loadedSlide = this;
+        if(section.anchor == 'secondPage'){
+          alert("First slide loaded");
+          var x = document.getElementById("myVideo"); 
+          x.play(); 
+        }
+      }
+    */
+
+	});
+</script>
+</body>
+</html>
+
+-->
+
+<!DOCTYPE html> 
+{% load staticfiles %}
+<html> 
+<body> 
+
+<div>
+<video width="400" height='440' poster="{{ MEDIA_URL }}poster.jpg" playsinline controls='true'>
+  <source src="{{ MEDIA_URL }}movie.mp4" type="video/mp4">
+  Your browser does not support HTML5 video.
+</video>
+</div>
+
+</body> 
+</html>

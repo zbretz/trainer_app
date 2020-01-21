@@ -1,0 +1,135 @@
+<!DOCTYPE html> 
+{% load staticfiles %}
+<html> 
+
+<head>
+<link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+<style type="text/css">
+
+  
+/* external css: flickity.css */
+
+* { box-sizing: border-box; }
+
+body { font-family: sans-serif; }
+
+/* force scrollbar, not necessary, but may reduce gaps. Setting a max-height on .carousel also works */
+html { overflow-y: scroll; }
+
+.carousel {
+  background: #EEE;
+}
+
+.carousel img {
+  display: block;
+  /*
+  height: 720px;
+  width: 540px;
+  */
+  height: 720px;
+  width: 720px;
+}
+
+/* external css: flickity.css */
+
+* { box-sizing: border-box; }
+
+body { font-family: sans-serif; }
+
+.carousel1 {
+  background: #EEE;
+}
+
+.carousel-cell1 {
+/*
+  width: 66%;
+  height: 840px;
+*/
+  width: 100%;
+  height: 800px;
+
+  margin-right: 10px;
+  background: #8C8;
+  border-radius: 5px;
+  counter-increment: carousel-cell;
+}
+
+/* cell number */
+.carousel-cell1:before {
+  display: block;
+  text-align: center;
+  
+  line-height: 200px;
+  font-size: 80px;
+  color: white;
+}
+
+.tiny{
+  width:100%;
+}
+
+a.is-selected {
+  opacity: .5;
+}
+
+
+
+</style>
+
+</head>
+
+<body> 
+
+  <div class="w3-center" style="z-index: 99; position:fixed ;height: 190px;background-color:white;border-bottom: 3px solid lightgray; width:100%; ">
+
+    <p style='font-size: 66px;
+
+  display: block;margin-left: auto;margin-right: auto;'>chambea</p>
+      </div>
+<!--
+  </div>
+  <div style="z-index: 98;position:relative; top:190px; height: 90px;background-color:rgb(255,255,240);border-bottom: 3px solid gray">
+      info
+  </div>
+-->
+
+
+<div style="z-index: 98;position:relative; top:190px; height: 140px;background-color:rgb(255,255,240);border-bottom: 3px solid gray">     
+  <img class='w3-round-xxlarge' style="width:110px; border: solid red; padding: 6px;margin-left: 28px;margin-top: 14px" src="{{ MEDIA_URL }}avatar_photo.png" alt="rasberries" />
+  <span style="margin-left: 20px;margin-top:20px;font-size: 30px"><strong>Instagram Rip</strong></span>
+</div>
+
+
+  <div class="carousel-cell1">
+    <video class='tiny' preload="auto" autoplay playsinline muted loop controls='true'>
+<!-- <source src="{{ MEDIA_URL }}travel1compress.mp4" type="video/mp4"> -->
+    <source src="{{ MEDIA_URL }}{{exercise.image}}" type="video/mp4"> 
+    </video>
+  </div>
+
+
+
+
+
+
+
+
+
+
+<script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+<script>
+var elem = document.querySelector('.main-carousel');
+var flkty = new Flickity( elem, {
+  // options
+  cellAlign: 'left',
+  contain: true
+});
+
+
+console.log( flkty.selectedIndex, flkty.selectedElement )
+
+</script>
+</body> 
+</html>

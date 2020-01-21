@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from trainer_app.models import Workout, UserProfile, Unit, Rep_Scheme, CircuitComplete, WorkoutLog
+from trainer_app.models import Celebrity_Video, Exercise, Workout, UserProfile, Unit, Rep_Scheme, CircuitComplete, WorkoutLog
 from django.urls import reverse
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
@@ -10,13 +10,38 @@ from django.contrib.auth.models import User
 
 from django.contrib.auth.models import User
 
-def simple_multi(request):
-		return render(request,'trainer_app/fullpage/examples/simple-multi-workout.html')
+def celebrity_profile(request, trainer):
+	trainer_videos = Celebrity_Video.objects.filter(trainer=trainer)
+	print(trainer)
+	other_videos = Celebrity_Video.objects.all()
+	context = {'videos':trainer_videos}
+	return render(request, 'trainer_app/fullpage/examples/masonry-test-live.html', context=context)
 
+def simple_multi(request):
+#		return render(request,'trainer_app/fullpage/examples/vidtest1.html')
+		return render(request,'trainer_app/fullpage/examples/masonry-test.html')
+
+def play_vid(request, exercise_name):
+	try:
+		e = Exercise.objects.get(name=exercise_name)
+	except:
+		e = Celebrity_Video.objects.get(vid_name=exercise_name)
+	context = {'exercise': e}
+	print(e.image)
+	return render(request,'trainer_app/fullpage/examples/vidtest1.html', context=context)
+
+
+#def get_vid(request):
+#	Exercise.objects.first().image
+#	return(e)
 
 def hello_trainers(request):
-	context_dict={}
-	return render(request,'trainer_app/fullpage/examples/simple-withtestvideo-hello.html', context=context_dict)
+	exercise_for_travel_carousel = Exercise.objects.first()
+	travel_videos = Celebrity_Video.objects.filter(trainer='Zach')
+	print(travel_videos)
+	print(travel_videos[1].thumbnail)
+	context_dict={'exercise_for_travel_carousel': exercise_for_travel_carousel,'travel_videos':travel_videos}
+	return render(request,'trainer_app/fullpage/examples/flickity-testing2.html', context=context_dict)
 	
 
 def single_page_app(request):

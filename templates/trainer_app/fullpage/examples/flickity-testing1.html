@@ -1,0 +1,262 @@
+<!DOCTYPE html> 
+{% load staticfiles %}
+<html> 
+
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+<style type="text/css">
+
+  
+/* external css: flickity.css */
+
+* { box-sizing: border-box; }
+
+body { font-family: sans-serif; }
+
+/* force scrollbar, not necessary, but may reduce gaps. Setting a max-height on .carousel also works */
+html { overflow-y: scroll; }
+
+/* external css: flickity.css */
+
+* { box-sizing: border-box; }
+
+body { font-family: sans-serif; }
+
+.carousel {
+  background: #eee;
+}
+.carousel-cell {
+/*
+  width: 66%;
+  height: 840px;
+*/
+  width: 100%;
+  height: 1000px;
+  margin-right: 10px;
+  background: #8C8;
+  border-radius: 5px;
+  counter-increment: carousel-cell;
+}
+/* cell number */
+.carousel-cell:before {
+  display: block;
+  text-align: center;
+  line-height: 200px;
+  font-size: 80px;
+  color: white;
+}
+
+
+.carousel2 {
+  margin:auto;
+  background: #eee;
+  width:96%;
+}
+.carousel-cell2 {
+/*
+  width: 66%;
+  height: 840px;
+*/
+  width: 33%;
+  height: auto;
+  margin-right: 20px;
+  background: #8C8;
+  border-radius: 5px;
+  counter-increment: carousel-cell;
+}
+/* cell number */
+.carousel-cell2:before {
+  display: block;
+  text-align: center;
+  line-height: 200px;
+  font-size: 80px;
+  color: white;
+}
+
+
+
+.tiny{
+  width:100%;
+}
+
+a{  opacity: .7}
+a.is-selected {
+  opacity: 1;
+}
+
+/**/
+div.gallery {
+  margin: 5px;
+  border: 1px solid #ccc;
+  float: left;
+  width: 300px;
+  height:400px;
+}
+
+div.gallery:hover {
+  border: 1px solid #777;
+}
+
+div.gallery img {
+  width: 100%;
+  height: auto;
+}
+
+div.desc {
+  padding: 15px;
+  text-align: center;
+}
+/**/
+
+
+
+</style>
+
+</head>
+
+<body>
+<!--
+<div id='msg' style="height:1000px;background-color: green"></div>
+<div id='body' style='display: none'>
+-->
+<!--
+<div id='msg'style='position:fixed;min-height:100%; min-width:100%; z-index:999; background-color:black'></div>
+-->
+  <div class="w3-center" style="z-index: 99; position:fixed ;height: 190px;background-color:white;border-bottom: 3px solid lightgray; width:100%; ">
+
+    <p style='font-size: 66px;
+
+  display: block;margin-left: auto;margin-right: auto;'>chambea</p>
+      
+
+  </div>
+  <div style="z-index: 98;position:relative; top:190px; height: 90px;background-color:rgb(255,255,240);border-bottom: 3px solid gray">
+      info
+  </div>
+
+<h1>Our Team</h1>
+<!-- Flickity HTML init -->
+<div class="carousel"
+  data-flickity='{ "wrapAround": true, "autoPlay": 3600  }'>
+  
+  <div class="carousel-cell">
+    <video class='tiny' preload="auto" autoplay playsinline muted loop controls='true' poster="{{ MEDIA_URL }}poster1.png">
+    <source src="{{ MEDIA_URL }}frenchfitnesscompress.mp4" type="video/mp4">
+    Your browser does not support HTML5 video.
+    </video>
+  </div>
+  <div class="carousel-cell">
+    <video class='tiny' preload="auto" autoplay playsinline muted loop controls='true'>
+    <source src="{{ MEDIA_URL }}fraserwilson.mp4" type="video/mp4">
+    Your browser does not support HTML5 video.
+  </video>
+  </div>
+  <div class="carousel-cell">
+    <video class='tiny' preload="auto" autoplay loop playsinline muted controls='true'>
+    <source src="{{ MEDIA_URL }}fraserwilson.mp4" type="video/mp4">
+    Your browser does not support HTML5 video.
+    </video>
+  </div>
+<!--  <div class="carousel-cell1"></div>
+  <div class="carousel-cell1"></div> -->
+</div>
+
+
+<div style='margin-top:200px;margin-left:auto;margin-right:auto; width:100%background-color: green'>
+  
+<div class="gallery">
+    <img src="{{ MEDIA_URL }}poster1.png" alt="Cinque Terre" width="1600" height="400">
+  <div class="desc">Add a description of the image here</div>
+</div>
+
+<div class="gallery">
+    <img src="{{ MEDIA_URL }}poster1.png" alt="Cinque Terre" width="1600" height="400">
+  <div class="desc">Add a description of the image here</div>
+</div>
+
+<div class="gallery">
+  <a target="_blank" href="img_5terre.jpg">
+    <img src="{{ MEDIA_URL }}poster1.png" alt="Cinque Terre" width="1600" height="400">
+  </a>
+  <div class="desc">Add a description of the image here</div>
+</div>
+
+<div class="gallery">
+  <a target="_blank" href="img_5terre.jpg">
+    <img src="img_5terre.jpg" alt="Cinque Terre" width="1600" height="400">
+  </a>
+  <div class="desc">Add a description of the image here</div>
+</div>
+
+<div class="gallery">
+  <a target="_blank" href="img_5terre.jpg">
+    <img src="img_5terre.jpg" alt="Cinque Terre" width="1600" height="400">
+  </a>
+  <div class="desc">Add a description of the image here</div>
+</div>
+
+<div class="gallery">
+  <a target="_blank" href="img_5terre.jpg">
+    <img src="img_5terre.jpg" alt="Cinque Terre" width="1600" height="400">
+  </a>
+  <div class="desc">Add a description of the image here</div>
+</div>
+
+
+
+</div>
+
+<div class="w3-row-padding">
+  <div class="w3-col s4"><img style='width:100% 'src="{{ MEDIA_URL }}poster1.png"></div>
+  <div class="w3-col s4"><img style='width:100% 'src="{{ MEDIA_URL }}poster1.png"></div>
+  <div class="w3-col s4"><img style='width:100% 'src="{{ MEDIA_URL }}poster1.png"></div>
+</div>
+<div style='padding-top: 20px'class="w3-row-padding">
+  <div class="w3-col s4"><img style='width:100% 'src="{{ MEDIA_URL }}poster1.png"></div>
+  <div class="w3-col s4"><img style='width:100% 'src="{{ MEDIA_URL }}poster1.png"></div>
+  <div class="w3-col s4"><img style='width:100% 'src="{{ MEDIA_URL }}poster1.png"></div>
+</div>
+<!--
+</div>
+-->
+
+<div class="carousel2"
+  data-flickity='{ "wrapAround": true  }'>
+  
+  <div class="carousel-cell2">
+    <img style='width:100% 'src="{{ MEDIA_URL }}poster1.png">
+  </div>
+  <div class="carousel-cell2">
+    <img style='width:100% 'src="{{ MEDIA_URL }}poster1.png">
+  </div>
+  <div class="carousel-cell2">
+    <img style='width:100% 'src="{{ MEDIA_URL }}poster1.png">
+  </div>
+
+<script>
+
+  $(document).ready(function() {
+    setTimeout(function(){ $('#body').show();$('#msg').hide(); }, 4000)
+    
+
+});
+</script>
+<script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+<script>
+var elem = document.querySelector('.main-carousel');
+var flkty = new Flickity( elem, {
+  // options
+  cellAlign: 'left',
+  contain: true
+});
+
+
+console.log( flkty.selectedIndex, flkty.selectedElement )
+</script>
+
+
+</body> 
+</html>

@@ -1,0 +1,245 @@
+<!DOCTYPE html> 
+{% load staticfiles %}
+<html> 
+
+<head>
+	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+<style>
+.main-content {
+  font-family: sans-serif;
+  line-height: 1.4;
+  font-size: 18px;
+  padding: 20px;
+  /*max-width: 640px;*/
+  margin: 0 auto;
+}
+
+.grid {
+  max-width: 1200px;
+}
+
+/* reveal grid after images loaded */
+.grid.are-images-unloaded {
+  opacity: 0;
+}
+
+.grid__item,
+.grid__col-sizer {
+  width: 32%;
+}
+
+.grid__gutter-sizer { width: 2%; }
+
+/* hide by default */
+.grid.are-images-unloaded .image-grid__item {
+  opacity: 0;
+}
+
+.grid__item {
+  margin-bottom: 20px;
+  float: left;
+}
+
+.grid__item--height1 { height: 140px; background: #EA0; }
+.grid__item--height2 { height: 220px; background: #C25; }
+.grid__item--height3 { height: 300px; background: #19F; }
+
+.grid__item--width2 { width: 66%; }
+
+.grid__item img {
+  display: block;
+  max-width: 100%;
+}
+
+
+.page-load-status {
+  display: none; /* hidden by default */
+  padding-top: 20px;
+  border-top: 1px solid #DDD;
+  text-align: center;
+  color: #777;
+}
+
+/* loader ellips in separate pen CSS */
+
+
+
+	
+</style>
+</head>
+<body> 
+
+    <div class="w3-center" style="z-index: 99; position:fixed ;height: 190px;background-color:white;border-bottom: 3px solid lightgray; width:100%; ">
+
+    <p style='font-size: 66px;
+
+  display: block;margin-left: auto;margin-right: auto;'>chambea</p>
+      
+
+  </div>
+  <div style="z-index: 98;position:relative; top:190px; height: 140px;background-color:rgb(255,255,240);border-bottom: 3px solid gray">
+     
+  <img class='w3-round-xxlarge' style="width:110px; border: solid red; padding: 6px;margin-left: 28px;margin-top: 14px" src="{{ MEDIA_URL }}avatar_photo.png" alt="rasberries" />
+<span style="margin-left: 20px;margin-top:20px;font-size: 30px"><strong>Instagram Rip</strong></span>
+
+  </div>
+
+<!--
+<div class='center'>
+<video id='tiny' preload="auto" playsinline muted autoplay controls='true'>
+  <source src="{{ MEDIA_URL }}43.mp4" type="video/mp4">
+  Your browser does not support HTML5 video.
+</video>
+</div> 
+-->
+
+
+<!--
+<img style='width:100% 'src="{{ MEDIA_URL }}posters/julie3poster.png">
+-->
+
+<!--main content -->
+<div id='main-content'>
+<!--------------------->
+<h1>Infinite Scroll - Masonry image grid</h1>
+
+<div class="grid are-images-unloaded">
+  <div class="grid__col-sizer"></div>
+  <div class="grid__gutter-sizer"></div>
+
+{% for video in videos %}
+  <div class="grid__item">
+    <img style='width:100% 'src="{{ MEDIA_URL }}{{video.thumbnail}}">
+  </div>
+{% endfor %}
+  
+
+  <!--
+
+  <div class="grid__item">
+    <img src="{{ MEDIA_URL }}posters/julie4poster.png" alt="look out" />
+  </div>
+
+
+  <div class="grid__item ">
+    <img src="{{ MEDIA_URL }}posters/julie5poster.png" alt="rasberries" />
+  </div>
+
+   <div class="grid__item ">
+    <img src="{{ MEDIA_URL }}posters/julie6poster.png" alt="rasberries" />
+  </div>
+ 
+   <div class="grid__item ">
+    <img src="{{ MEDIA_URL }}posters/coachclayton1poster.png" alt="rasberries" />
+  </div>
+  
+   <div class="grid__item ">
+    <img src="{{ MEDIA_URL }}posters/coachclayton2poster.png" alt="rasberries" />
+  </div>
+  
+    <div class="grid__item ">
+    <img src="{{ MEDIA_URL }}posters/coachclayton3poster.png" alt="rasberries" />
+  </div>
+  
+     <div class="grid__item ">
+    <img src="{{ MEDIA_URL }}posters/jonocastano2poster.png" alt="rasberries" />
+  </div>
+  
+  <div class="grid__item ">
+    <img src="{{ MEDIA_URL }}posters/jonocastano3poster.png" alt="rasberries" />
+  </div>
+  
+   <div class="grid__item ">
+    <img src="{{ MEDIA_URL }}posters/jonocastano5poster.png" alt="rasberries" />
+  </div>
+    
+   <div class="grid__item ">
+    <img src="{{ MEDIA_URL }}posters/jonocastano4poster.png" alt="rasberries" />
+  </div>
+  
+     <div class="grid__item ">
+    <img src="https://i.picsum.photos/id/1039/6945/4635.jpg" alt="rasberries" />
+  </div>
+  
+  
+  
+  
+  -->
+  
+</div>
+
+<div class="page-load-status">
+  <div class="loader-ellips infinite-scroll-request">
+    <span class="loader-ellips__dot"></span>
+    <span class="loader-ellips__dot"></span>
+    <span class="loader-ellips__dot"></span>
+    <span class="loader-ellips__dot"></span>
+  </div>
+  <p class="infinite-scroll-last">End of content</p>
+  <p class="infinite-scroll-error">No more pages to load</p>
+</div>
+
+<!--end main content -->
+</div>
+<!--------------------->
+
+<script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+<script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
+<script type="text/javascript">
+//-------------------------------------//
+// init Masonry
+
+var $grid = $('.grid').masonry({
+  itemSelector: 'none', // select none at first
+  columnWidth: '.grid__col-sizer',
+  gutter: '.grid__gutter-sizer',
+  percentPosition: true,
+  stagger: 30,
+  // nicer reveal transition
+  visibleStyle: { transform: 'translateY(0)', opacity: 1 },
+  hiddenStyle: { transform: 'translateY(100px)', opacity: 0 },
+});
+
+// get Masonry instance
+var msnry = $grid.data('masonry');
+
+// initial items reveal
+$grid.imagesLoaded( function() {
+  $grid.removeClass('are-images-unloaded');
+  $grid.masonry( 'option', { itemSelector: '.grid__item' });
+  var $items = $grid.find('.grid__item');
+  $grid.masonry( 'appended', $items );
+});
+
+//-------------------------------------//
+// hack CodePen to load pens as pages
+
+var nextPenSlugs = [
+  '202252c2f5f192688dada252913ccf13',
+  'a308f05af22690139e9a2bc655bfe3ee',
+  '6c9ff23039157ee37b3ab982245eef28',
+];
+
+function getPenPath() {
+  var slug = nextPenSlugs[ this.loadCount ];
+  if ( slug ) {
+    return 'https://s.codepen.io/desandro/debug/' + slug;
+  }
+}
+
+//-------------------------------------//
+// init Infinte Scroll
+
+$grid.infiniteScroll({
+  path: getPenPath,
+  append: '.grid__item',
+  outlayer: msnry,
+  status: '.page-load-status',
+});
+
+</script>
+
+</body> 
+</html>
